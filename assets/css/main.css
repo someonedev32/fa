@@ -1,13 +1,13 @@
 html {
-    background-color: #000000;
+    background-color: #0D1116;
     font-size: 12px;
     margin: 25px;
 }
 
 body {
     font-family: Monaco, Terminal, monospace;
-    font-size: 2em;
-    color: #ffffff;
+    font-size: 1.4em;
+    color: #F0F6FC;
     margin: 25px;
 }
 
@@ -17,9 +17,9 @@ a {
 
 .typed-cursor {
     opacity: 1;
-    -webkit-animation: blink 0.9s infinite;
-    -moz-animation: blink 0.9s infinite;
-    animation: blink 0.9s infinite;
+    -webkit-animation: blink 0.8s infinite;
+    -moz-animation: blink 0.8s infinite;
+    animation: blink 0.8s infinite;
 }
 
 @keyframes blink {
