@@ -32,7 +32,7 @@ html, body {
     color: white;
     padding: 30px;
     background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background for text */
-    border-radius: 0px;
+    border-radius: 1px;
     max-width: 90%;  /* Ensuring text does not overflow */
     margin: 0 15px;
 }
