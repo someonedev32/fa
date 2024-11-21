@@ -31,8 +31,8 @@ html, body {
     text-align: center;
     color: white;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background for text */
+    border-radius: 4px;
     max-width: 90%;  /* Ensuring text does not overflow */
     margin: 0 15px;
 }
