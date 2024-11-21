@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(button);
 
     button.addEventListener('click', function() {
-        const newImageUrl = 'another-image.jpeg'; // replace with your new image URL
+        const newImageUrl = 'another-image.jpg'; // replace with your new image URL
         document.querySelector('.content').style.backgroundImage = `url(${newImageUrl})`;
     });
 });
