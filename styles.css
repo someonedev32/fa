@@ -7,10 +7,7 @@
 
 html, body {
     height: 100%;
-    font-family: Arial, sans-serif;
-}
-
-body {
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +30,57 @@ body {
 .content {
     text-align: center;
     color: white;
-    padding: 20px;
+    padding: 30px;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
     border-radius: 10px;
-    max-width: 90%;  /* Ensuring text d
+    max-width: 90%;  /* Ensuring text does not overflow */
+    margin: 0 15px;
+}
+
+h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.countdown span {
+    margin: 0 5px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    .countdown {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .countdown {
+        font-size: 1.2em;
+    }
+}
