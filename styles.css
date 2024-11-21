@@ -28,14 +28,14 @@ header h1 {
     font-size: 3rem;
     color: #fff;
     padding: 20px;
-    background: url('your-image.jpg') no-repeat center center/cover;
+    background: url('flamuri.jpeg') no-repeat center center/cover;
     -webkit-background-clip: text;
     background-clip: text;
 }
 
 /* Section for text with image background */
 .content {
-    background-image: url('your-image.jpg');
+    background-image: url('flamuri.jpeg');
     background-size: cover;
     background-position: center;
     text-align: center;
