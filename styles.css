@@ -1,3 +1,4 @@
+/* Reset some basic styling */
 * {
     margin: 0;
     padding: 0;
@@ -6,80 +7,88 @@
 
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     line-height: 1.6;
+    color: #333;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
 header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
     text-align: center;
+    margin-top: 50px;
 }
 
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 1rem;
-}
-
-nav ul li a {
+header h1 {
+    font-size: 3rem;
     color: #fff;
-    text-decoration: none;
+    padding: 20px;
+    background: url('your-image.jpg') no-repeat center center/cover;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
-#hero {
-    background: #007BFF;
+/* Section for text with image background */
+.content {
+    background-image: url('your-image.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
     color: white;
-    text-align: center;
-    padding: 50px 0;
+    padding: 100px 20px;
 }
 
-#services {
-    padding: 20px;
-    text-align: center;
+.content h2 {
+    font-size: 2.5rem;
 }
 
-.service {
-    margin: 20px 0;
-}
-
-#about, #contact {
-    padding: 20px;
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: #333;
-    color: #fff;
-}
-
-form {
-    max-width: 400px;
+.content p {
+    font-size: 1.2rem;
+    max-width: 800px;
     margin: 0 auto;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background: #007BFF;
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
     color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
-button:hover {
-    background: #0056b3;
+/* Responsive design for small screens */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .content h2 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .content h2 {
+        font-size: 1.5rem;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+    }
 }
