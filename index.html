@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flamur Ahmeti</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link to AOS (Animate on Scroll) Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Link to External CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="container">
-        <div class="content">
+        <div class="content" data-aos="fade-up">
             <h1>Flamur Ahmeti</h1>
-            <p>Growth-driven digital marketer dedicated to empowering brands to thrive. Expertise in strategic planning, data analytics, and blockchain innovation.<br><br>For business inquiries <br>📩 Email me at <br>contact@flamurahmeti.com</p>
-            </div>
+            <p>Growth-driven digital marketer dedicated to empowering brands to thrive. Expertise in strategic planning, data analytics, and blockchain innovation.</p>
+            <p>For business inquiries<br>📩 Email me at<br><a href="mailto:contact@flamurahmeti.com" class="email-link">contact@flamurahmeti.com</a></p>
         </div>
     </div>
 
+    <!-- Link to AOS Library JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1200,
+        });
+    </script>
 </body>
 </html>
