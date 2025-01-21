@@ -7,14 +7,14 @@
 
 html, body {
     height: 100%;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('e773d237-991f-4140-8866-73045f0304be.jpeg'); /* Example background image */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+    color: #f0f0f0;
 }
 
 /* Full-screen container */
@@ -29,11 +29,10 @@ html, body {
 /* Centered content styling */
 .content {
     text-align: center;
-    color: white;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background for text */
-    border-radius: 1px;
-    max-width: 90%;  /* Ensuring text does not overflow */
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    max-width: 90%;
     margin: 0 15px;
 }
 
@@ -41,20 +40,29 @@ h1 {
     font-size: 3.5em;
     margin-bottom: 10px;
     letter-spacing: 2px;
+    font-weight: 700;
 }
 
 p {
-    font-size: 1.5em;
+    font-size: 1.2em;
+    line-height: 1.5;
     margin-bottom: 20px;
 }
 
-.countdown {
-    font-size: 2em;
-    font-weight: bold;
+.email-link {
+    color: #ffcc00;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.countdown span {
-    margin: 0 5px;
+.email-link:hover {
+    color: #ffffff;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @media (max-width: 768px) {
@@ -63,11 +71,7 @@ p {
     }
 
     p {
-        font-size: 1.2em;
-    }
-
-    .countdown {
-        font-size: 1.5em;
+        font-size: 1em;
     }
 }
 
@@ -77,10 +81,6 @@ p {
     }
 
     p {
-        font-size: 1em;
-    }
-
-    .countdown {
-        font-size: 1.2em;
+        font-size: 0.9em;
     }
 }
