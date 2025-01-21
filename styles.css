@@ -95,22 +95,3 @@ footer {
     padding: 10px 0;
     background-color: rgba(0, 0, 0, 0.8);
 }
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.social-icons a img {
-    width: 40px;
-    height: 40px;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.social-icons a img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.1);
-}
