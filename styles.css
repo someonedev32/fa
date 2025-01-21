@@ -7,7 +7,7 @@
 
 html, body {
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,12 @@ html, body {
     background-size: 200% 200%;
     animation: gradientShift 10s ease infinite;
     color: #f0f0f0;
+    background-image: url('e773d237-991f-4140-8866-73045f0304be.jpeg'); /* Example background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
+
 
 /* Full-screen container */
 .container {
