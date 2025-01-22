@@ -38,7 +38,7 @@ html, body {
 .content {
     text-align: center;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 4px; /* Slightly larger border radius */
     max-width: 90%;
     margin: 0 15px;
@@ -46,7 +46,7 @@ html, body {
 }
 
 h1 {
-    font-size: 3rem; /* Increased size for better readability */
+    font-size: 1.6rem; /* Increased size for better readability */
     margin-bottom: 10px;
     letter-spacing: 2px;
     font-weight: 600;
@@ -82,12 +82,12 @@ footer {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 15px; /* Spacing between icons and copyright text */
+    margin-bottom: 10px; /* Spacing between icons and copyright text */
 }
 
 .social-icon {
     color: #ffffff;
-    font-size: 2.0rem; /* Larger icons */
+    font-size: 1.3rem; /* Larger icons */
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -112,7 +112,7 @@ footer .copyright {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     p {
@@ -122,7 +122,7 @@ footer .copyright {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     p {
