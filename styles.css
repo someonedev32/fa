@@ -65,7 +65,7 @@ p {
 }
 
 .email-link:hover {
-    color: #f3a847; /* Added hover effect for the email */
+    color: #162B0D; /* Added hover effect for the email */
 }
 
 /* Social Icons Styling in Footer */
@@ -93,7 +93,7 @@ footer {
 }
 
 .social-icon:hover {
-    color: #f3a847; /* Hover effect for social icons */
+    color: #162B0D; /* Hover effect for social icons */
 }
 
 /* Copyright Text Styling */
