@@ -53,7 +53,7 @@ h1 {
 }
 
 p {
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -87,7 +87,7 @@ footer {
 
 .social-icon {
     color: #ffffff;
-    font-size: 1.3rem; /* Larger icons */
+    font-size: 1.4rem; /* Larger icons */
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -98,7 +98,7 @@ footer {
 
 /* Copyright Text Styling */
 footer .copyright {
-    font-size: 0.4rem; /* Smaller text for copyright */
+    font-size: 0.7rem; /* Smaller text for copyright */
     color: #f0f0f0;
 }
 
@@ -116,16 +116,16 @@ footer .copyright {
     }
 
     p {
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     p {
-        font-size: 0.6rem;
+        font-size: 1.3rem;
     }
 }
