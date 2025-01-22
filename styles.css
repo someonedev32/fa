@@ -37,11 +37,11 @@ html, body {
 /* Centered content styling */
 .content {
     text-align: center;
-    padding: 30px;
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 4px; /* Slightly larger border radius */
     max-width: 90%;
-    margin: 0 15px;
+    margin: 0 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
 }
 
@@ -55,7 +55,7 @@ h1 {
 p {
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .email-link {
@@ -75,7 +75,7 @@ footer {
     background-color: transparent; /* No background for footer */
     color: #ffffff;
     width: 100%; /* Ensure footer spans the full width */
-    margin-top: 20px; /* Push footer to the bottom */
+    margin-top: 15px; /* Push footer to the bottom */
 }
 
 .social-icons {
