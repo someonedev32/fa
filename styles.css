@@ -20,7 +20,7 @@ html, body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 100vh; /* Minimum height of the body to fill the screen */
+    min-height: 90vh; /* Minimum height of the body to fill the screen */
 }
 
 /* Full-screen container */
