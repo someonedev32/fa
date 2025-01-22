@@ -12,8 +12,8 @@ html, body {
     flex-direction: column; /* Stack content and footer */
     justify-content: flex-start;
     align-items: center;
-    background: linear-gradient(120deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-    background-size: 200% 200%;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background-size: 100% 100%;
     animation: gradientShift 10s ease infinite;
     color: #f0f0f0;
     background-image: url('e773d237-991f-4140-8866-73045f0304be.jpeg'); /* Background image */
@@ -39,14 +39,14 @@ html, body {
     text-align: center;
     padding: 30px;
     background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 15px; /* Slightly larger border radius */
+    border-radius: 4px; /* Slightly larger border radius */
     max-width: 90%;
     margin: 0 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
 }
 
 h1 {
-    font-size: 4rem; /* Increased size for better readability */
+    font-size: 3rem; /* Increased size for better readability */
     margin-bottom: 10px;
     letter-spacing: 2px;
     font-weight: 600;
@@ -87,7 +87,7 @@ footer {
 
 .social-icon {
     color: #ffffff;
-    font-size: 2.5rem; /* Larger icons */
+    font-size: 2.0rem; /* Larger icons */
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -98,7 +98,7 @@ footer {
 
 /* Copyright Text Styling */
 footer .copyright {
-    font-size: 0.9rem; /* Smaller text for copyright */
+    font-size: 0.6rem; /* Smaller text for copyright */
     color: #f0f0f0;
 }
 
@@ -112,7 +112,7 @@ footer .copyright {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     h1 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     p {
@@ -122,7 +122,7 @@ footer .copyright {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     p {
