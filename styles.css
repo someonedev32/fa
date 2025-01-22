@@ -12,7 +12,7 @@ html, body {
     flex-direction: column; /* Stack content and footer */
     justify-content: flex-start;
     align-items: center;
-    background: linear-gradient(120deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
     background-size: 100% 100%;
     animation: gradientShift 10s ease infinite;
     color: #f0f0f0;
@@ -38,11 +38,11 @@ html, body {
 .content {
     text-align: center;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 4px; /* Slightly larger border radius */
     max-width: 90%;
     margin: 0 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Subtle shadow effect */
 }
 
 h1 {
@@ -71,7 +71,7 @@ p {
 /* Social Icons Styling in Footer */
 footer {
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: transparent; /* No background for footer */
     color: #ffffff;
     width: 100%; /* Ensure footer spans the full width */
@@ -81,7 +81,7 @@ footer {
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 16px;
     margin-bottom: 10px; /* Spacing between icons and copyright text */
 }
 
@@ -98,7 +98,7 @@ footer {
 
 /* Copyright Text Styling */
 footer .copyright {
-    font-size: 0.3rem; /* Smaller text for copyright */
+    font-size: 1.3rem; /* Smaller text for copyright */
     color: #f0f0f0;
 }
 
@@ -112,20 +112,20 @@ footer .copyright {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     p {
-        font-size: 1.1rem;
+        font-size: 1.6rem;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     p {
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 }
