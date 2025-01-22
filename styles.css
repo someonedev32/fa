@@ -65,12 +65,20 @@ p {
     color: #f3a847; /* Added hover effect for the email */
 }
 
-/* Social Icons Styling */
+/* Social Icons Styling in Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 0;
+    background-color: transparent; /* No background for footer */
+    color: #ffffff;
+}
+
 .social-icons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 30px; /* Spacing from content */
+    margin-bottom: 15px; /* Spacing between icons and copyright text */
 }
 
 .social-icon {
@@ -84,17 +92,9 @@ p {
     color: #f3a847; /* Hover effect for social icons */
 }
 
-/* Footer Styling */
-footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px 0;
-    background-color: transparent; /* No background for footer */
-    color: #ffffff;
-}
-
-footer p {
-    font-size: 1rem;
+/* Copyright Text Styling */
+footer .copyright {
+    font-size: 0.9rem; /* Smaller text for copyright */
     color: #f0f0f0;
 }
 
