@@ -38,11 +38,11 @@ html, body {
 .content {
     text-align: center;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 4px; /* Slightly larger border radius */
     max-width: 90%;
     margin: 0 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
 }
 
 h1 {
@@ -75,7 +75,7 @@ footer {
     background-color: transparent; /* No background for footer */
     color: #ffffff;
     width: 100%; /* Ensure footer spans the full width */
-    margin-top: auto; /* Push footer to the bottom */
+    margin-top: 20px; /* Push footer to the bottom */
 }
 
 .social-icons {
@@ -98,7 +98,7 @@ footer {
 
 /* Copyright Text Styling */
 footer .copyright {
-    font-size: 0.7rem; /* Smaller text for copyright */
+    font-size: 0.6rem; /* Smaller text for copyright */
     color: #f0f0f0;
 }
 
@@ -116,7 +116,7 @@ footer .copyright {
     }
 
     p {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
 }
 
@@ -126,6 +126,6 @@ footer .copyright {
     }
 
     p {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
 }
