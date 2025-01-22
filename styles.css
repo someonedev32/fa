@@ -13,7 +13,7 @@ html, body {
     justify-content: flex-start;
     align-items: center;
     background: linear-gradient(120deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-    background-size: 100% 100%;
+    background-size: auto;
     animation: gradientShift 10s ease infinite;
     color: #f0f0f0;
     background-image: url('e773d237-991f-4140-8866-73045f0304be.jpeg'); /* Background image */
