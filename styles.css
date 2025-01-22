@@ -7,7 +7,7 @@
 
 html, body {
     height: 100%;
-    font-family: 'Dream Avenue', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Changed to Poppins for better readability */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ html, body {
     background-size: 200% 200%;
     animation: gradientShift 10s ease infinite;
     color: #f0f0f0;
-    background-image: url('e773d237-991f-4140-8866-73045f0304be.jpeg'); /* Example background image */
+    background-image: url('e773d237-991f-4140-8866-73045f0304be.jpeg'); /* Background image */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -34,22 +34,23 @@ html, body {
 .content {
     text-align: center;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px; /* Slightly larger border radius */
     max-width: 90%;
     margin: 0 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 4rem; /* Increased size for better readability */
     margin-bottom: 10px;
     letter-spacing: 2px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 p {
-    font-size: 1.2em;
-    line-height: 1.5;
+    font-size: 1.3rem;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
@@ -60,38 +61,58 @@ p {
 }
 
 .email-link:hover {
-    color: #ffffff;
+    color: #f3a847; /* Added hover effect for the email */
 }
 
+/* Social Icons Styling */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon {
+    color: #ffffff;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f3a847; /* Hover effect for social icons */
+}
+
+/* Keyframes for gradient animation */
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.5em;
+        font-size: 3rem;
     }
 
     p {
-        font-size: 1em;
+        font-size: 1.1rem;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 2em;
+        font-size: 2.5rem;
     }
 
     p {
-        font-size: 0.9em;
+        font-size: 1rem;
     }
-}
-
-footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.8);
 }
