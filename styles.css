@@ -129,10 +129,3 @@ footer .copyright {
         font-size: 0.9rem;
     }
 }
-
-@media (max-width: 768px) {
-    [data-aos="fade-left"],
-    [data-aos="fade-right"] {
-        animation-name: zoomIn !important; /* Apply zoom-in animation */
-    }
-}
