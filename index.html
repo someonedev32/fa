@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="sq">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CV // EMPTY</title>
+  <title>CV // Flamur Ahmeti</title>
 
-  <!-- Optional: if online, this loads a hacker-style mono font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -14,7 +13,7 @@
     :root{
       --bg: #000000;
       --ink: #021505;         /* requested */
-      --glow: #00ff95;        /* visibility glow (keeps your ink color) */
+      --glow: #00ff95;        /* visibility glow */
       --muted: rgba(0,255,149,.55);
       --card: rgba(2,21,5,.14);
       --border: rgba(0,255,149,.16);
@@ -33,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* subtle scanlines + vignette */
     body::before{
       content:"";
       position:fixed; inset:0;
@@ -47,7 +45,6 @@
       z-index: 0;
     }
 
-    /* occasional noise flicker */
     body::after{
       content:"";
       position:fixed; inset:-20%;
@@ -96,7 +93,7 @@
       display:flex;
       flex-direction:column;
       gap:6px;
-      min-width: 220px;
+      min-width: 240px;
     }
 
     .tag{
@@ -159,14 +156,13 @@
       position:relative;
     }
 
-    /* typing effect */
     .typing{
       display:inline-block;
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid rgba(0,255,149,.65);
       padding-right: 6px;
-      animation: typing 2.4s steps(26, end) forwards, caret .85s step-end infinite;
+      animation: typing 2.2s steps(28, end) forwards, caret .85s step-end infinite;
       max-width: 0;
     }
     @keyframes typing{
@@ -181,7 +177,7 @@
       margin: 12px 0 0;
       font-size: 14px;
       color: rgba(0,255,149,.58);
-      max-width: 72ch;
+      max-width: 78ch;
       position:relative;
       text-shadow: 0 0 22px rgba(0,255,149,.08);
     }
@@ -257,13 +253,14 @@
     .v{
       color: rgba(0,255,149,.55);
       font-size: 13px;
+      word-break: break-word;
     }
 
     .pillrow{
       display:flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
     .pill{
       border: 1px solid rgba(0,255,149,.18);
@@ -275,7 +272,6 @@
       box-shadow: 0 0 18px rgba(0,255,149,.06);
     }
 
-    /* glitch on hover */
     .glitch{
       position:relative;
       display:inline-block;
@@ -311,7 +307,6 @@
     }
     a:hover{ border-bottom-color: rgba(0,255,149,.55); }
 
-    /* reveal animation */
     .reveal{
       opacity: 0;
       transform: translateY(12px);
@@ -332,16 +327,18 @@
         <div class="status"><span class="dot"></span> online // build: <span id="build"></span></div>
       </div>
       <div class="status">
-        <span class="glitch">EMPTY</span> • <span id="clock"></span>
+        <span class="glitch">Flamur Ahmeti</span> • <span id="clock"></span>
       </div>
     </div>
 
     <section class="hero reveal">
       <h1 class="headline">
-        <span class="typing">EMPTY // Professional Profile</span>
+        <span class="typing">Flamur Ahmeti // Full-Stack Developer</span>
       </h1>
       <p class="sub">
-        Replace the placeholders with your real details. Keep it minimal, measurable, and specific: what you build, how you build it, and the impact.
+        Full-stack developer focused on building production-ready web applications end-to-end: UI, backend services, APIs, and deployment.
+        Delivers clean architectures, predictable performance, and reliable releases, with attention to security fundamentals and maintainable codebases.
+        Primary stack spans modern JavaScript/TypeScript, React, Node.js, and cloud-native deployment workflows.
       </p>
     </section>
 
@@ -349,27 +346,26 @@
       <div class="card reveal">
         <h2>Summary</h2>
         <p>
-          Security-minded builder focused on clean systems, reliable delivery, and fast iteration.
-          Experienced in designing, shipping, and maintaining products with a strong UI/UX sensibility.
+          Builds full web products from idea to deployment: user interfaces, server logic, databases, authentication, and integrations.
+          Optimizes reliability and delivery speed by using clear component architecture, API contracts, version control, and CI/CD.
         </p>
         <div class="pillrow" aria-label="highlights">
-          <span class="pill">Systems</span>
-          <span class="pill">Security</span>
+          <span class="pill">Full-Stack</span>
           <span class="pill">UI Engineering</span>
-          <span class="pill">Automation</span>
-          <span class="pill">Performance</span>
+          <span class="pill">APIs</span>
+          <span class="pill">Databases</span>
+          <span class="pill">Deployment</span>
+          <span class="pill">Security Basics</span>
         </div>
       </div>
 
       <aside class="card reveal">
         <h2>Contact</h2>
         <div class="kv">
-          <div class="k">Location</div><div class="v">[City, Country]</div>
-          <div class="k">Email</div><div class="v"><a href="mailto:you@domain.com">you@domain.com</a></div>
-          <div class="k">Phone</div><div class="v">[+00 000 000 000]</div>
-          <div class="k">Portfolio</div><div class="v"><a href="#">[your-site]</a></div>
-          <div class="k">GitHub</div><div class="v"><a href="#">[username]</a></div>
-          <div class="k">LinkedIn</div><div class="v"><a href="#">[profile]</a></div>
+          <div class="k">Location</div><div class="v">Kosovo</div>
+          <div class="k">Email</div><div class="v"><a href="mailto:contact@flamurahmeti.com">contact@flamurahmeti.com</a></div>
+          <div class="k">Website</div><div class="v"><a href="https://www.instaserver.net" target="_blank" rel="noreferrer noopener">www.instaserver.net</a></div>
+          <div class="k">GitHub</div><div class="v"><a href="https://github.com/someonedev32" target="_blank" rel="noreferrer noopener">github.com/someonedev32</a></div>
         </div>
       </aside>
 
@@ -377,13 +373,12 @@
         <h2>Experience</h2>
         <ul>
           <li>
-            <span class="glitch">[Role]</span> -- <span class="glitch">[Company]</span> (<span class="glitch">[YYYY–YYYY]</span>)<br/>
-            Built/owned <span class="glitch">[feature/system]</span>, improved <span class="glitch">[metric]</span> by <span class="glitch">[X%]</span>,
-            reduced <span class="glitch">[cost/latency/bugs]</span> by <span class="glitch">[Y%]</span>.
+            <span class="glitch">Full-Stack Developer</span> — <span class="glitch">Instaserver</span> (<span class="glitch">2024–2025</span>)<br/>
+            Built and maintained web features across frontend and backend: UI components, REST/JSON APIs, authentication flows, and admin tooling.
           </li>
           <li>
-            <span class="glitch">[Role]</span> -- <span class="glitch">[Company]</span> (<span class="glitch">[YYYY–YYYY]</span>)<br/>
-            Delivered <span class="glitch">[project]</span> end-to-end: design → implementation → monitoring → iteration.
+            <span class="glitch">Full-Stack Developer</span> — <span class="glitch">www.instaserver.net</span> (<span class="glitch">2024–2025</span>)<br/>
+            Managed deployments and production updates: environment configuration, domain/SSL setup, performance checks, and bug fixes.
           </li>
         </ul>
       </div>
@@ -391,14 +386,29 @@
       <div class="card reveal">
         <h2>Skills</h2>
         <div class="pillrow">
-          <span class="pill">JavaScript / TypeScript</span>
-          <span class="pill">HTML / CSS</span>
-          <span class="pill">UI Animation</span>
-          <span class="pill">Node / Python</span>
-          <span class="pill">Security Basics</span>
-          <span class="pill">APIs</span>
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">React</span>
+          <span class="pill">Next.js</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">Express</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">Auth (JWT)</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">MongoDB</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Vercel</span>
+          <span class="pill">Render</span>
+          <span class="pill">CI/CD</span>
           <span class="pill">Git</span>
-          <span class="pill">Linux</span>
+          <span class="pill">GitHub</span>
+          <span class="pill">Shopify</span>
+          <span class="pill">WordPress</span>
+          <span class="pill">Web Performance</span>
+          <span class="pill">Security Basics</span>
         </div>
       </div>
 
@@ -406,12 +416,8 @@
         <h2>Projects</h2>
         <ul>
           <li>
-            <span class="glitch">[Project Name]</span> -- <span class="glitch">[1-line description]</span><br/>
-            Stack: <span class="glitch">[tech]</span>. Result: <span class="glitch">[impact/metric]</span>.
-          </li>
-          <li>
-            <span class="glitch">[Project Name]</span> -- <span class="glitch">[1-line description]</span><br/>
-            Focus: <span class="glitch">[security/performance/ui]</span>. Output: <span class="glitch">[demo/link]</span>.
+            <span class="glitch">iOS App</span> — <a class="glitch" href="#" target="_blank" rel="noreferrer noopener">[link to be updated]</a><br/>
+            Update pending.
           </li>
         </ul>
       </div>
@@ -419,19 +425,17 @@
       <div class="card reveal">
         <h2>Education</h2>
         <ul>
-          <li><span class="glitch">[Degree]</span> -- <span class="glitch">[School]</span> (<span class="glitch">[YYYY]</span>)</li>
-          <li><span class="glitch">[Cert]</span> -- <span class="glitch">[Provider]</span> (<span class="glitch">[YYYY]</span>)</li>
+          <li><span class="glitch">Self-paced courses</span> — <span class="glitch">Udemy / YouTube</span></li>
         </ul>
       </div>
     </section>
 
     <footer class="reveal">
-      Press <span class="glitch">Ctrl/Cmd + P</span> to print • Theme: black / ink <span class="glitch">#021505</span> / weight <span class="glitch">950</span>
+      Theme: black / ink <span class="glitch">#021505</span> / weight <span class="glitch">950</span>
     </footer>
   </main>
 
   <script>
-    // build id + clock
     const build = document.getElementById("build");
     const clock = document.getElementById("clock");
     build.textContent = (Math.random().toString(16).slice(2, 10)).toUpperCase();
@@ -445,7 +449,6 @@
     }
     tick(); setInterval(tick, 250);
 
-    // reveal on scroll
     const els = Array.from(document.querySelectorAll(".reveal"));
     const io = new IntersectionObserver((entries)=>{
       for (const e of entries){
@@ -454,7 +457,6 @@
     }, { threshold: 0.12 });
     els.forEach(el => io.observe(el));
 
-    // subtle random "terminal flicker" by toggling body opacity briefly
     function flicker(){
       const r = Math.random();
       if (r < 0.06){
