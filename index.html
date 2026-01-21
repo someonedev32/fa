@@ -17,7 +17,7 @@
       --muted: rgba(0,255,149,.55);
       --card: rgba(2,21,5,.14);
       --border: rgba(0,255,149,.16);
-      --weight: 955;          /* requested "950" */
+      --weight: 950;          /* requested "950" */
     }
 
     *{ box-sizing: border-box; }
@@ -32,6 +32,7 @@
       overflow-x: hidden;
     }
 
+    /* subtle scanlines + vignette */
     body::before{
       content:"";
       position:fixed; inset:0;
@@ -45,6 +46,7 @@
       z-index: 0;
     }
 
+    /* occasional noise flicker */
     body::after{
       content:"";
       position:fixed; inset:-20%;
@@ -156,6 +158,7 @@
       position:relative;
     }
 
+    /* typing effect (desktop/tablet) */
     .typing{
       display:inline-block;
       white-space: nowrap;
@@ -167,10 +170,21 @@
     }
     @keyframes typing{
       from{ max-width: 0; }
-      to{ max-width: 36ch; }
+      to{ max-width: 40ch; }
     }
     @keyframes caret{
       50%{ border-color: transparent; }
+    }
+
+    /* Mobile fix: show full name/title (no cut, no typing) */
+    @media (max-width: 600px){
+      .typing{
+        white-space: normal;
+        border-right: none;
+        max-width: 100%;
+        animation: none;
+        display: inline;
+      }
     }
 
     .sub{
@@ -292,14 +306,6 @@
       100%{ transform: translate(0,0) skewX(0deg); }
     }
 
-    footer{
-      margin-top: 18px;
-      opacity:.85;
-      font-size: 12px;
-      color: rgba(0,255,149,.40);
-      text-align:center;
-    }
-
     a{
       color: rgba(0,255,149,.70);
       text-decoration: none;
@@ -307,6 +313,7 @@
     }
     a:hover{ border-bottom-color: rgba(0,255,149,.55); }
 
+    /* reveal animation (cards/sections) */
     .reveal{
       opacity: 0;
       transform: translateY(12px);
@@ -315,6 +322,71 @@
     .reveal.on{
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Project icon row */
+    .projectRow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin: 4px 0 0;
+    }
+    .appIcon{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,255,149,.18);
+      background: rgba(0,0,0,.35);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 0 18px rgba(0,255,149,.06);
+      flex: 0 0 auto;
+    }
+    .appIcon svg{
+      width: 22px;
+      height: 22px;
+      stroke: rgba(0,255,149,.70);
+    }
+    .projectText{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      min-width:0;
+    }
+    .projectTitle{
+      color: rgba(0,255,149,.72);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+    .projectMeta{
+      color: rgba(0,255,149,.52);
+      font-size: 12px;
+    }
+
+    /* Footer: center + line-by-line reveal */
+    footer{
+      margin-top: 18px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 8px 0;
+      color: rgba(0,255,149,.45);
+    }
+    .footerLine{
+      opacity: 0;
+      transform: translateY(8px);
+      animation: footerIn 650ms ease forwards;
+      text-shadow: 0 0 22px rgba(0,255,149,.08);
+    }
+    .footerLine:nth-child(1){ animation-delay: .10s; }
+    .footerLine:nth-child(2){ animation-delay: .55s; }
+    .footerLine:nth-child(3){ animation-delay: 1.00s; }
+
+    @keyframes footerIn{
+      to{ opacity:1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -333,7 +405,10 @@
 
     <section class="hero reveal">
       <h1 class="headline">
-        <span class="typing">Flamur Ahmeti /Full-Stack Developer</span>
+        <span class="typing">
+          Flamur Ahmeti
+          <span style="display:block;font-size:.65em;opacity:.75">Full-Stack Developer</span>
+        </span>
       </h1>
       <p class="sub">
         Full-stack developer focused on building production-ready web applications end-to-end: UI, backend services, APIs, and deployment.
@@ -364,7 +439,7 @@
         <div class="kv">
           <div class="k">Location</div><div class="v">Kosovo</div>
           <div class="k">Email</div><div class="v"><a href="mailto:contact@flamurahmeti.com">contact@flamurahmeti.com</a></div>
-          <div class="k">Website</div><div class="v"><a href="https://www.flamurahmeti.com" target="_blank" rel="noreferrer noopener">www.flamurahmeti.com</a></div>
+          <div class="k">Website</div><div class="v"><a href="https://www.instaserver.net" target="_blank" rel="noreferrer noopener">www.instaserver.net</a></div>
           <div class="k">GitHub</div><div class="v"><a href="https://github.com/someonedev32" target="_blank" rel="noreferrer noopener">github.com/someonedev32</a></div>
         </div>
       </aside>
@@ -373,7 +448,7 @@
         <h2>Experience</h2>
         <ul>
           <li>
-            <span class="glitch">Full-Stack Developer</span> — <span class="glitch">instaserver.net</span> (<span class="glitch">2024–2025</span>)<br/>
+            <span class="glitch">Full-Stack Developer</span> — <span class="glitch">Instaserver</span> (<span class="glitch">2024–2025</span>)<br/>
             Built and maintained web features across frontend and backend: UI components, REST/JSON APIs, authentication flows, and admin tooling.
           </li>
           <li>
@@ -414,11 +489,25 @@
 
       <div class="card reveal">
         <h2>Projects</h2>
-        <ul>
-          <li>
-            <span class="glitch">iOS App</span> — <a class="glitch" href="#" target="_blank" rel="noreferrer noopener">https://apps.apple.com/xk/app/ndjej/id6757281962</a><br/>
-          </li>
-        </ul>
+
+        <div class="projectRow">
+          <a class="appIcon" href="https://apps.apple.com/xk/app/ndjej/id6757281962" target="_blank" rel="noreferrer noopener" aria-label="Open iOS App link">
+            <!-- minimal iOS-ish icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M16 2c-1.2.8-2 2.2-2 3.8 0 .5.1 1 .2 1.4 1.6.1 3.1-.7 3.9-1.8.7-.9 1.1-2 .9-3.4-.7-.1-2 .1-3 .0Z"/>
+              <path d="M12.2 7.2c1.4 0 2.5-.9 3.5-.9 1 0 2.3.7 3.1 1.9-2.8 1.5-2.3 5.2.5 6.3-.5 1.4-1.1 2.8-2 4-.8 1.1-1.6 2.1-2.9 2.1-1.2 0-1.6-.7-3.1-.7s-2 .7-3.1.7c-1.3 0-2.2-1.1-3-2.2-1.6-2.3-2.8-6.4-.9-9.1.9-1.3 2.4-2.1 3.9-2.1 1.2 0 2.2.8 3.1.8Z" stroke="rgba(0,255,149,.70)"/>
+            </svg>
+          </a>
+
+          <div class="projectText">
+            <div class="projectTitle">
+              <span class="glitch">Ndjej</span> — iOS App
+            </div>
+            <div class="projectMeta">
+              App Store: <a href="https://apps.apple.com/xk/app/ndjej/id6757281962" target="_blank" rel="noreferrer noopener">apps.apple.com/xk/app/ndjej/id6757281962</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card reveal">
@@ -429,18 +518,15 @@
       </div>
     </section>
 
-   <footer class="reveal">
-  <span class="glitch">
-    © <span id="year"></span> Flamur Ahmeti
-  </span>
-  <span style="opacity:.55"> · Crafted in darkness · Precision over noise</span>
-</footer>
-    
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    <footer class="reveal">
+      <div class="footerLine"><span class="glitch">© <span id="year"></span> Flamur Ahmeti</span></div>
+      <div class="footerLine">Crafted in darkness</div>
+      <div class="footerLine" style="opacity:.65">Precision over noise</div>
+    </footer>
+  </main>
 
   <script>
+    // build id + clock
     const build = document.getElementById("build");
     const clock = document.getElementById("clock");
     build.textContent = (Math.random().toString(16).slice(2, 10)).toUpperCase();
@@ -454,6 +540,7 @@
     }
     tick(); setInterval(tick, 250);
 
+    // reveal on scroll
     const els = Array.from(document.querySelectorAll(".reveal"));
     const io = new IntersectionObserver((entries)=>{
       for (const e of entries){
@@ -462,6 +549,7 @@
     }, { threshold: 0.12 });
     els.forEach(el => io.observe(el));
 
+    // subtle random "terminal flicker"
     function flicker(){
       const r = Math.random();
       if (r < 0.06){
@@ -471,6 +559,9 @@
       setTimeout(flicker, 250 + Math.random()*850);
     }
     flicker();
+
+    // footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
