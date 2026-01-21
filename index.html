@@ -21,6 +21,43 @@
       --border: rgba(0,255,149,.16);
       --weight: 950;          /* requested "950" */
     }
+/* ===== MOBILE: wider PIN box + better spacing ===== */
+@media (max-width: 600px){
+
+  .gate{
+    padding: 12px;                 /* më pak “kornizë”, më shumë hapësirë reale */
+  }
+
+  .gateBox{
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .gateHdr{
+    padding: 16px 14px 12px;
+  }
+
+  .gateScreen{
+    padding: 14px 14px 6px;
+  }
+
+  .gateForm{
+    padding: 10px 14px 16px;       /* rrit hapësirën e formës */
+  }
+
+  .gateInput{
+    height: 52px;                  /* më i madh në mobile */
+    font-size: 16px;               /* parandalon zoom-in në iOS */
+    letter-spacing: 10px;          /* duket më “desktop” */
+    padding: 0 14px;
+  }
+
+  .gateBtn{
+    height: 52px;
+    font-size: 13px;
+  }
+}
 
     /* ===== MOBILE: button under text ===== */
 @media (max-width: 600px){
