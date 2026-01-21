@@ -32,24 +32,7 @@
       letter-spacing:.2px;
       overflow-x:hidden;
     }
-@media (max-width: 600px){
-  .gate{
-    padding: 6px;              /* më pak hapësirë anash */
-  }
 
-  .gateBox{
-    width: calc(100vw - 12px); /* pothuaj full screen */
-    max-width: none;
-    border-radius: 14px;
-  }
-
-  .gateHdr,
-  .gateScreen,
-  .gateForm{
-    padding-left: 12px;
-    padding-right: 12px;       /* padding i brendshëm i balancuar */
-  }
-}
     /* scanlines + vignette */
     body::before{
       content:"";
@@ -551,6 +534,47 @@
         font-size:13px;
       }
     }
+  /* FIX: Gate full-width on mobile (override everything) */
+@media (max-width: 600px){
+
+  /* stop centering the card */
+  .gate{
+    place-items: stretch !important;  /* instead of center */
+    padding: 0 !important;           /* no outer margins */
+  }
+
+  /* make the box fill the screen width */
+  .gateBox{
+    width: 100% !important;
+    max-width: none !important;
+    border-radius: 0 !important;     /* optional: looks like full-screen panel */
+    justify-self: stretch !important;
+    align-self: stretch !important;
+  }
+
+  /* make content breathe */
+  .gateHdr{ padding: 16px 14px 12px !important; }
+  .gateScreen{ padding: 14px 14px 10px !important; min-height: 120px !important; }
+  .gateForm{ padding: 10px 14px 18px !important; }
+
+  /* button under input + big touch targets */
+  .gateRow{
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .gateInput{
+    height: 56px !important;
+    font-size: 16px !important;      /* prevents iOS zoom */
+    letter-spacing: 10px !important;
+  }
+
+  .gateBtn{
+    width: 100% !important;
+    height: 56px !important;
+  }
+}  
   </style>
 </head>
 
