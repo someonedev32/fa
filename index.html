@@ -22,6 +22,132 @@
       --weight: 950;          /* requested "950" */
     }
 
+    /* ACCESS GATE (visual PIN lock) */
+.gate{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.92);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.gateBox{
+  width: min(720px, 100%);
+  border: 1px solid rgba(0,255,149,.18);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(2,21,5,.20), rgba(0,0,0,.2));
+  box-shadow: 0 0 0 1px rgba(0,255,149,.05), 0 14px 60px rgba(0,0,0,.75);
+  overflow: hidden;
+}
+
+.gateHdr{
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid rgba(0,255,149,.14);
+}
+
+.gateTitle{
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: rgba(0,255,149,.70);
+  text-shadow: 0 0 24px rgba(0,255,149,.10);
+}
+
+.gateSub{
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(0,255,149,.45);
+}
+
+.gateScreen{
+  padding: 14px 16px 4px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(0,255,149,.55);
+}
+
+.gateScreen .line{
+  opacity: .92;
+}
+
+.gateForm{
+  padding: 10px 16px 16px;
+}
+
+.gateLabel{
+  display:block;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(0,255,149,.60);
+  margin-bottom: 8px;
+}
+
+.gateRow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.gateInput{
+  flex:1;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,149,.18);
+  background: rgba(0,0,0,.40);
+  color: rgba(0,255,149,.70);
+  padding: 0 12px;
+  outline: none;
+  font-weight: 950;
+  letter-spacing: 6px;
+}
+
+.gateInput:focus{
+  box-shadow: 0 0 0 3px rgba(0,255,149,.10);
+  border-color: rgba(0,255,149,.35);
+}
+
+.gateBtn{
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,149,.22);
+  background: rgba(2,21,5,.22);
+  color: rgba(0,255,149,.70);
+  font-weight: 950;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.gateBtn:hover{
+  border-color: rgba(0,255,149,.40);
+  box-shadow: 0 0 22px rgba(0,255,149,.10);
+}
+
+.gateMsg{
+  margin-top: 10px;
+  min-height: 16px;
+  font-size: 12px;
+  color: rgba(0,255,149,.55);
+}
+
+.gateMsg.bad{
+  color: rgba(255,80,80,.85);
+}
+
+.gateHint{
+  margin-top: 10px;
+  font-size: 11px;
+  color: rgba(0,255,149,.35);
+}
+
+/* prevent page interactions while gate is shown */
+body.locked{
+  overflow: hidden;
+}
+
     *{ box-sizing: border-box; }
     html,body{ height:100%; }
     body{
@@ -396,6 +522,32 @@ footer{
 </head>
 
 <body>
+  <!-- ACCESS GATE -->
+<div id="gate" class="gate">
+  <div class="gateBox">
+    <div class="gateHdr">
+      <div class="gateTitle">ACCESS CONTROL</div>
+      <div class="gateSub">SECURE TERMINAL · AUTH REQUIRED</div>
+    </div>
+
+    <div class="gateScreen" aria-live="polite">
+      <div class="line">[SYS] Initializing…</div>
+      <div class="line">[SYS] Encrypted session channel: OK</div>
+      <div class="line">[AUTH] Enter access PIN to continue.</div>
+    </div>
+
+    <form id="gateForm" class="gateForm" autocomplete="off">
+      <label class="gateLabel" for="pin">PIN</label>
+      <div class="gateRow">
+        <input id="pin" class="gateInput" inputmode="numeric" pattern="[0-9]*" maxlength="8" placeholder="••••" />
+        <button class="gateBtn" type="submit">UNLOCK</button>
+      </div>
+      <div id="gateMsg" class="gateMsg"></div>
+      <div class="gateHint">Tip: PIN nuk ruhet në server (GitHub Pages). Ky është “visual gate”.</div>
+    </form>
+  </div>
+</div>
+
   <main>
     <div class="topbar">
       <div class="brand">
@@ -530,6 +682,61 @@ footer{
   </main>
 
   <script>
+    // ===== ACCESS PIN GATE (visual) =====
+const ACCESS_PIN = "2749"; // <-- ndryshoje këtu
+const gate = document.getElementById("gate");
+const gateForm = document.getElementById("gateForm");
+const pinInput = document.getElementById("pin");
+const gateMsg = document.getElementById("gateMsg");
+
+function openGate(){
+  document.body.classList.add("locked");
+  gate.style.display = "grid";
+  setTimeout(() => pinInput?.focus(), 50);
+}
+
+function closeGate(){
+  document.body.classList.remove("locked");
+  gate.style.display = "none";
+}
+
+function isUnlocked(){
+  return sessionStorage.getItem("cv_unlocked") === "1";
+}
+
+function setUnlocked(){
+  sessionStorage.setItem("cv_unlocked", "1");
+}
+
+function fail(msg){
+  gateMsg.textContent = msg;
+  gateMsg.classList.add("bad");
+  pinInput.value = "";
+  pinInput.focus();
+}
+
+function ok(msg){
+  gateMsg.textContent = msg;
+  gateMsg.classList.remove("bad");
+}
+
+// init
+if (!isUnlocked()){
+  openGate();
+} else {
+  closeGate();
+}
+
+gateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const v = (pinInput.value || "").trim();
+  if (!v) return fail("PIN required.");
+  if (v !== ACCESS_PIN) return fail("ACCESS DENIED.");
+  ok("ACCESS GRANTED.");
+  setUnlocked();
+  setTimeout(closeGate, 300);
+});
+ 
     // build id + clock
     const clock = document.getElementById("clock");
     function tick(){
