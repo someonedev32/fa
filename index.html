@@ -398,7 +398,7 @@ footer{
     <div class="topbar">
       <div class="brand">
         <div class="tag">curriculum vitae</div>
-        <div class="status"><span class="dot"></span> online // build: <span id="build"></span></div>
+        <div class="status"><span class="dot"></span> Available for work</div>
       </div>
       <div class="status">
         <span class="glitch">Flamur Ahmeti</span> • <span id="clock"></span>
@@ -529,10 +529,7 @@ footer{
 
   <script>
     // build id + clock
-    const build = document.getElementById("build");
     const clock = document.getElementById("clock");
-    build.textContent = (Math.random().toString(16).slice(2, 10)).toUpperCase();
-
     function tick(){
       const d = new Date();
       const hh = String(d.getHours()).padStart(2,"0");
