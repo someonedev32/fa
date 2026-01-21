@@ -78,6 +78,45 @@
     width: 100%;
   }
 }
+/* ===== MOBILE: force LEFT alignment for specific sections ===== */
+@media (max-width: 600px){
+
+  /* Top status bar text left */
+  .topbar{
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .topbar .status{
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  /* Projects section: everything left-aligned */
+  .card h2{
+    text-align: left;
+  }
+
+  .projectRow{
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .projectText{
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .projectTitle,
+  .projectMeta{
+    text-align: left;
+  }
+
+  /* prevent accidental centering from flex */
+  .card{
+    align-items: stretch;
+  }
+}
 
 /* ===== MOBILE RESPONSIVE FIX ===== */
 @media (max-width: 600px){
