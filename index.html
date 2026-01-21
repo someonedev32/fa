@@ -32,7 +32,24 @@
       letter-spacing:.2px;
       overflow-x:hidden;
     }
+@media (max-width: 600px){
+  .gate{
+    padding: 6px;              /* më pak hapësirë anash */
+  }
 
+  .gateBox{
+    width: calc(100vw - 12px); /* pothuaj full screen */
+    max-width: none;
+    border-radius: 14px;
+  }
+
+  .gateHdr,
+  .gateScreen,
+  .gateForm{
+    padding-left: 12px;
+    padding-right: 12px;       /* padding i brendshëm i balancuar */
+  }
+}
     /* scanlines + vignette */
     body::before{
       content:"";
