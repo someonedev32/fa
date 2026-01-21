@@ -429,10 +429,16 @@
       </div>
     </section>
 
-    <footer class="reveal">
-      Theme: black / ink <span class="glitch">#021505</span> / weight <span class="glitch">950</span>
-    </footer>
-  </main>
+   <footer class="reveal">
+  <span class="glitch">
+    © <span id="year"></span> Flamur Ahmeti
+  </span>
+  <span style="opacity:.55"> · Crafted in darkness · Precision over noise</span>
+</footer>
+    
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
   <script>
     const build = document.getElementById("build");
