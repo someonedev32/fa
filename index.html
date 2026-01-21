@@ -21,6 +21,27 @@
       --border: rgba(0,255,149,.16);
       --weight: 950;          /* requested "950" */
     }
+
+    /* ===== MOBILE: button under text ===== */
+@media (max-width: 600px){
+
+  .gateRow{
+    flex-direction: column;   /* nga row → column */
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .gateInput{
+    width: 100%;
+    text-align: center;
+    letter-spacing: 6px;
+  }
+
+  .gateBtn{
+    width: 100%;
+  }
+}
+
 /* ===== MOBILE RESPONSIVE FIX ===== */
 @media (max-width: 600px){
 
