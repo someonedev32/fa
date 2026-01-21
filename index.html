@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV // EMPTY</title>
+
+  <!-- Optional: if online, this loads a hacker-style mono font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #000000;
+      --ink: #021505;         /* requested */
+      --glow: #00ff95;        /* visibility glow (keeps your ink color) */
+      --muted: rgba(0,255,149,.55);
+      --card: rgba(2,21,5,.14);
+      --border: rgba(0,255,149,.16);
+      --weight: 950;          /* requested "950" */
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight: var(--weight);
+      letter-spacing: .2px;
+      overflow-x: hidden;
+    }
+
+    /* subtle scanlines + vignette */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.03) 1px, rgba(0,0,0,0) 1px),
+        radial-gradient(ellipse at center, rgba(0,255,149,.10) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,.65) 100%);
+      background-size: 100% 3px, 100% 100%;
+      pointer-events:none;
+      mix-blend-mode: screen;
+      opacity:.55;
+      z-index: 0;
+    }
+
+    /* occasional noise flicker */
+    body::after{
+      content:"";
+      position:fixed; inset:-20%;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity:.055;
+      pointer-events:none;
+      z-index: 0;
+      animation: noise 2.8s steps(2,end) infinite;
+    }
+    @keyframes noise{
+      0%,100%{ transform:translate(0,0); opacity:.05; }
+      10%{ transform:translate(-2%,1%); }
+      20%{ transform:translate(2%,-1%); }
+      30%{ transform:translate(-3%,-2%); opacity:.07; }
+      40%{ transform:translate(3%,2%); }
+      50%{ transform:translate(-1%,3%); }
+      60%{ transform:translate(2%,1%); opacity:.06; }
+      70%{ transform:translate(-2%,-3%); }
+      80%{ transform:translate(1%,-2%); }
+      90%{ transform:translate(-1%,2%); }
+    }
+
+    main{
+      position:relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 18px 72px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap:12px;
+      padding: 14px 16px;
+      background: linear-gradient(180deg, rgba(2,21,5,.22), rgba(2,21,5,.08));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 0 0 1px rgba(0,255,149,.05), 0 10px 40px rgba(0,0,0,.6);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: 220px;
+    }
+
+    .tag{
+      font-size: 12px;
+      color: rgba(0,255,149,.45);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size: 12px;
+      color: rgba(0,255,149,.55);
+      white-space: nowrap;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: rgba(0,255,149,.25);
+      box-shadow: 0 0 16px rgba(0,255,149,.55);
+      animation: pulse 1.7s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); opacity:.7; }
+      50%{ transform: scale(1.6); opacity:1; }
+    }
+
+    .hero{
+      margin-top: 22px;
+      padding: 18px 18px 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(2,21,5,.14), rgba(0,0,0,0));
+      position: relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,255,149,.12), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(0,255,149,.08), transparent 45%),
+        radial-gradient(circle at 50% 100%, rgba(0,255,149,.10), transparent 55%);
+      opacity:.8;
+      pointer-events:none;
+    }
+
+    .headline{
+      margin:0;
+      font-size: clamp(28px, 3.6vw, 46px);
+      line-height: 1.08;
+      color: var(--ink);
+      text-shadow:
+        0 0 1px rgba(0,255,149,.20),
+        0 0 18px rgba(0,255,149,.14),
+        0 0 42px rgba(0,255,149,.08);
+      position:relative;
+    }
+
+    /* typing effect */
+    .typing{
+      display:inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid rgba(0,255,149,.65);
+      padding-right: 6px;
+      animation: typing 2.4s steps(26, end) forwards, caret .85s step-end infinite;
+      max-width: 0;
+    }
+    @keyframes typing{
+      from{ max-width: 0; }
+      to{ max-width: 36ch; }
+    }
+    @keyframes caret{
+      50%{ border-color: transparent; }
+    }
+
+    .sub{
+      margin: 12px 0 0;
+      font-size: 14px;
+      color: rgba(0,255,149,.58);
+      max-width: 72ch;
+      position:relative;
+      text-shadow: 0 0 22px rgba(0,255,149,.08);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 0 0 1px rgba(0,255,149,.04);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: linear-gradient(120deg, transparent 35%, rgba(0,255,149,.08), transparent 65%);
+      transform: translateX(-120%);
+      animation: sweep 7.5s linear infinite;
+      pointer-events:none;
+      opacity:.55;
+    }
+    @keyframes sweep{
+      0%{ transform: translateX(-120%); }
+      100%{ transform: translateX(120%); }
+    }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: rgba(0,255,149,.70);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      text-shadow: 0 0 26px rgba(0,255,149,.10);
+    }
+
+    p, li{
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(0,255,149,.56);
+    }
+    ul{ margin: 0; padding-left: 18px; }
+    li{ margin: 8px 0; }
+
+    .kv{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap: 8px 12px;
+      align-items: baseline;
+    }
+    .k{
+      color: rgba(0,255,149,.70);
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      opacity:.9;
+    }
+    .v{
+      color: rgba(0,255,149,.55);
+      font-size: 13px;
+    }
+
+    .pillrow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .pill{
+      border: 1px solid rgba(0,255,149,.18);
+      background: rgba(0,0,0,.35);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: rgba(0,255,149,.60);
+      box-shadow: 0 0 18px rgba(0,255,149,.06);
+    }
+
+    /* glitch on hover */
+    .glitch{
+      position:relative;
+      display:inline-block;
+    }
+    .glitch:hover{
+      text-shadow:
+        2px 0 rgba(0,255,149,.28),
+        -2px 0 rgba(0,255,149,.18),
+        0 0 18px rgba(0,255,149,.14);
+      animation: glitch 320ms steps(2,end) 1;
+    }
+    @keyframes glitch{
+      0%{ transform: translate(0,0) skewX(0deg); }
+      20%{ transform: translate(-1px,0) skewX(6deg); }
+      40%{ transform: translate(2px,-1px) skewX(-6deg); }
+      60%{ transform: translate(-2px,1px) skewX(7deg); }
+      80%{ transform: translate(1px,0) skewX(-4deg); }
+      100%{ transform: translate(0,0) skewX(0deg); }
+    }
+
+    footer{
+      margin-top: 18px;
+      opacity:.85;
+      font-size: 12px;
+      color: rgba(0,255,149,.40);
+      text-align:center;
+    }
+
+    a{
+      color: rgba(0,255,149,.70);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(0,255,149,.25);
+    }
+    a:hover{ border-bottom-color: rgba(0,255,149,.55); }
+
+    /* reveal animation */
+    .reveal{
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal.on{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="topbar">
+      <div class="brand">
+        <div class="tag">curriculum vitae</div>
+        <div class="status"><span class="dot"></span> online // build: <span id="build"></span></div>
+      </div>
+      <div class="status">
+        <span class="glitch">EMPTY</span> • <span id="clock"></span>
+      </div>
+    </div>
+
+    <section class="hero reveal">
+      <h1 class="headline">
+        <span class="typing">EMPTY // Professional Profile</span>
+      </h1>
+      <p class="sub">
+        Replace the placeholders with your real details. Keep it minimal, measurable, and specific: what you build, how you build it, and the impact.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card reveal">
+        <h2>Summary</h2>
+        <p>
+          Security-minded builder focused on clean systems, reliable delivery, and fast iteration.
+          Experienced in designing, shipping, and maintaining products with a strong UI/UX sensibility.
+        </p>
+        <div class="pillrow" aria-label="highlights">
+          <span class="pill">Systems</span>
+          <span class="pill">Security</span>
+          <span class="pill">UI Engineering</span>
+          <span class="pill">Automation</span>
+          <span class="pill">Performance</span>
+        </div>
+      </div>
+
+      <aside class="card reveal">
+        <h2>Contact</h2>
+        <div class="kv">
+          <div class="k">Location</div><div class="v">[City, Country]</div>
+          <div class="k">Email</div><div class="v"><a href="mailto:you@domain.com">you@domain.com</a></div>
+          <div class="k">Phone</div><div class="v">[+00 000 000 000]</div>
+          <div class="k">Portfolio</div><div class="v"><a href="#">[your-site]</a></div>
+          <div class="k">GitHub</div><div class="v"><a href="#">[username]</a></div>
+          <div class="k">LinkedIn</div><div class="v"><a href="#">[profile]</a></div>
+        </div>
+      </aside>
+
+      <div class="card reveal">
+        <h2>Experience</h2>
+        <ul>
+          <li>
+            <span class="glitch">[Role]</span> -- <span class="glitch">[Company]</span> (<span class="glitch">[YYYY–YYYY]</span>)<br/>
+            Built/owned <span class="glitch">[feature/system]</span>, improved <span class="glitch">[metric]</span> by <span class="glitch">[X%]</span>,
+            reduced <span class="glitch">[cost/latency/bugs]</span> by <span class="glitch">[Y%]</span>.
+          </li>
+          <li>
+            <span class="glitch">[Role]</span> -- <span class="glitch">[Company]</span> (<span class="glitch">[YYYY–YYYY]</span>)<br/>
+            Delivered <span class="glitch">[project]</span> end-to-end: design → implementation → monitoring → iteration.
+          </li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <h2>Skills</h2>
+        <div class="pillrow">
+          <span class="pill">JavaScript / TypeScript</span>
+          <span class="pill">HTML / CSS</span>
+          <span class="pill">UI Animation</span>
+          <span class="pill">Node / Python</span>
+          <span class="pill">Security Basics</span>
+          <span class="pill">APIs</span>
+          <span class="pill">Git</span>
+          <span class="pill">Linux</span>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            <span class="glitch">[Project Name]</span> -- <span class="glitch">[1-line description]</span><br/>
+            Stack: <span class="glitch">[tech]</span>. Result: <span class="glitch">[impact/metric]</span>.
+          </li>
+          <li>
+            <span class="glitch">[Project Name]</span> -- <span class="glitch">[1-line description]</span><br/>
+            Focus: <span class="glitch">[security/performance/ui]</span>. Output: <span class="glitch">[demo/link]</span>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <h2>Education</h2>
+        <ul>
+          <li><span class="glitch">[Degree]</span> -- <span class="glitch">[School]</span> (<span class="glitch">[YYYY]</span>)</li>
+          <li><span class="glitch">[Cert]</span> -- <span class="glitch">[Provider]</span> (<span class="glitch">[YYYY]</span>)</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      Press <span class="glitch">Ctrl/Cmd + P</span> to print • Theme: black / ink <span class="glitch">#021505</span> / weight <span class="glitch">950</span>
+    </footer>
+  </main>
+
+  <script>
+    // build id + clock
+    const build = document.getElementById("build");
+    const clock = document.getElementById("clock");
+    build.textContent = (Math.random().toString(16).slice(2, 10)).toUpperCase();
+
+    function tick(){
+      const d = new Date();
+      const hh = String(d.getHours()).padStart(2,"0");
+      const mm = String(d.getMinutes()).padStart(2,"0");
+      const ss = String(d.getSeconds()).padStart(2,"0");
+      clock.textContent = `${hh}:${mm}:${ss}`;
+    }
+    tick(); setInterval(tick, 250);
+
+    // reveal on scroll
+    const els = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries)=>{
+      for (const e of entries){
+        if (e.isIntersecting) e.target.classList.add("on");
+      }
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+
+    // subtle random "terminal flicker" by toggling body opacity briefly
+    function flicker(){
+      const r = Math.random();
+      if (r < 0.06){
+        document.body.style.opacity = "0.985";
+        setTimeout(()=>document.body.style.opacity="1", 55 + Math.random()*70);
+      }
+      setTimeout(flicker, 250 + Math.random()*850);
+    }
+    flicker();
+  </script>
+</body>
+</html>
