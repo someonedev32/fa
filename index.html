@@ -487,36 +487,43 @@
     /* ===== MOBILE ===== */
     @media (max-width: 600px){
 
-  /* Gate overlay */
-  .gate{
-    padding: 10px !important;
-  }
+    
+  .gateInput {
+    flex: 1;
+    width: 100%;
+    height: 56px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 255, 149, .24);
+    background: rgba(0, 0, 0, .45);
+    color: rgba(0, 255, 149, .80);
+    outline: none;
+    font-weight: 950;
+    text-align: center;
+    padding: 0 18px;
+    font-size: 18px;
+    letter-spacing: 14px;
+    -webkit-text-security: disc;
+    text-security: disc;
+} 
 
-  /* Make the card FULL WIDTH on mobile */
-  .gateBox{
-    width: 100% !important;
-    max-width: 100% !important;
-  }
+      /* ===== MOBILE HARD OVERRIDE: PIN INPUT ===== */
+@media (max-width: 600px){
 
-  /* Remove internal limits */
-  .gateForm{
-    width: 100% !important;
-  }
-
-  /* Input must truly stretch */
-  .gateRow{
-    width: 100% !important;
-    align-items: stretch !important;
-  }
-
-  .gateInput{
-    width: 100% !important;
-    max-width: none !important;
+  /* force input to ignore parent layout */
+  input.gateInput{
     display: block !important;
-  }
+    width: 100vw !important;           /* merr gjithë ekranin */
+    max-width: calc(100vw - 32px) !important;
+    margin: 0 auto !important;
 
-  .gateBtn{
-    width: 100% !important;
+    height: 60px !important;
+    padding: 0 20px !important;
+
+    font-size: 18px !important;
+    letter-spacing: clamp(10px, 5vw, 16px) !important;
+
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
   }
 }
 
