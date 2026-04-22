@@ -1,1051 +1,132 @@
 <!doctype html>
-<html lang="sq">
+<html lang="en">
 <head>
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="googlebot" content="noindex, nofollow" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flamur Ahmeti</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#000;
-      --ink:#021505;
-      --border:rgba(0,255,149,.16);
-      --card:rgba(2,21,5,.14);
-      --weight:950;
-      --glow: rgba(0,255,149,.35);
-      --glow2: rgba(0,255,149,.18);
-      --txt: rgba(0,255,149,.70);
-      --txt2: rgba(0,255,149,.55);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font-family:"Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-weight:var(--weight);
-      letter-spacing:.2px;
-      overflow-x:hidden;
-    }
-
-    /* scanlines + vignette */
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,.03) 1px, rgba(0,0,0,0) 1px),
-        radial-gradient(ellipse at center, rgba(0,255,149,.10) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,.65) 100%);
-      background-size:100% 3px, 100% 100%;
-      pointer-events:none;
-      mix-blend-mode:screen;
-      opacity:.55;
-      z-index:0;
-    }
-
-    /* noise */
-    body::after{
-      content:"";
-      position:fixed; inset:-20%;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      opacity:.055;
-      pointer-events:none;
-      z-index:0;
-      animation:noise 2.8s steps(2,end) infinite;
-    }
-    @keyframes noise{
-      0%,100%{ transform:translate(0,0); opacity:.05; }
-      50%{ transform:translate(2%,-1%); opacity:.07; }
-    }
-
-    main{
-      position:relative;
-      z-index:1;
-      max-width:980px;
-      margin:0 auto;
-      padding:48px 18px 72px;
-    }
-
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      padding:14px 16px;
-      background:linear-gradient(180deg, rgba(2,21,5,.22), rgba(2,21,5,.08));
-      border:1px solid var(--border);
-      border-radius:14px;
-      box-shadow:0 0 0 1px rgba(0,255,149,.05), 0 10px 40px rgba(0,0,0,.6);
-      backdrop-filter:blur(8px);
-    }
-
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      min-width:240px;
-    }
-
-    .tag{
-      font-size:12px;
-      color:rgba(0,255,149,.45);
-      text-transform:uppercase;
-      letter-spacing:2px;
-    }
-
-    .status{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:12px;
-      color:rgba(0,255,149,.55);
-      white-space:nowrap;
-    }
-
-    .dot{
-      width:10px; height:10px;
-      border-radius:50%;
-      background:rgba(0,255,149,.25);
-      box-shadow:0 0 16px rgba(0,255,149,.55);
-      animation:pulse 1.7s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{ transform:scale(1); opacity:.7; }
-      50%{ transform:scale(1.6); opacity:1; }
-    }
-
-    /* print icon button */
-    .iconBtn{
-      margin-left:10px;
-      width:34px;
-      height:34px;
-      border-radius:12px;
-      border:1px solid rgba(0,255,149,.22);
-      background:rgba(2,21,5,.22);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-    }
-    .iconBtn svg{
-      width:18px;
-      height:18px;
-      stroke:rgba(0,255,149,.70);
-    }
-    .iconBtn:hover{
-      border-color:rgba(0,255,149,.40);
-      box-shadow:0 0 18px rgba(0,255,149,.10);
-    }
-
-    .hero{
-      margin-top:22px;
-      padding:18px 18px 22px;
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:linear-gradient(180deg, rgba(2,21,5,.14), rgba(0,0,0,0));
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0,255,149,.12), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(0,255,149,.08), transparent 45%),
-        radial-gradient(circle at 50% 100%, rgba(0,255,149,.10), transparent 55%);
-      opacity:.8;
-      pointer-events:none;
-    }
-
-    .headline{
-      margin:0;
-      font-size:clamp(28px, 3.6vw, 46px);
-      line-height:1.08;
-      color:var(--ink);
-      text-shadow:0 0 1px rgba(0,255,149,.20), 0 0 18px rgba(0,255,149,.14), 0 0 42px rgba(0,255,149,.08);
-      position:relative;
-    }
-
-    /* typing (desktop/tablet) */
-    .typing{
-      display:inline-block;
-      white-space:nowrap;
-      overflow:hidden;
-      border-right:2px solid rgba(0,255,149,.65);
-      padding-right:6px;
-      animation:typing 2.2s steps(28,end) forwards, caret .85s step-end infinite;
-      max-width:0;
-    }
-    @keyframes typing{ from{max-width:0} to{max-width:40ch} }
-    @keyframes caret{ 50%{ border-color:transparent } }
-
-    .sub{
-      margin:12px 0 0;
-      font-size:14px;
-      color:rgba(0,255,149,.58);
-      max-width:78ch;
-      text-shadow:0 0 22px rgba(0,255,149,.08);
-      position:relative;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:16px;
-      margin-top:16px;
-    }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns:1fr; }
-      .brand{ min-width:unset; }
-    }
-
-    .card{
-      border:1px solid var(--border);
-      background:var(--card);
-      border-radius:16px;
-      padding:16px;
-      box-shadow:0 0 0 1px rgba(0,255,149,.04);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .card::after{
-      content:"";
-      position:absolute; inset:-1px;
-      background:linear-gradient(120deg, transparent 35%, rgba(0,255,149,.08), transparent 65%);
-      transform:translateX(-120%);
-      animation:sweep 7.5s linear infinite;
-      pointer-events:none;
-      opacity:.55;
-    }
-    @keyframes sweep{ 0%{transform:translateX(-120%)} 100%{transform:translateX(120%)} }
-
-    h2{
-      margin:0 0 10px;
-      font-size:14px;
-      color:rgba(0,255,149,.70);
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-      text-shadow:0 0 26px rgba(0,255,149,.10);
-    }
-
-    p, li{
-      margin:0;
-      font-size:13px;
-      line-height:1.55;
-      color:rgba(0,255,149,.56);
-    }
-    ul{ margin:0; padding-left:18px; }
-    li{ margin:8px 0; }
-
-    .kv{
-      display:grid;
-      grid-template-columns:110px 1fr;
-      gap:8px 12px;
-      align-items:baseline;
-    }
-    .k{
-      color:rgba(0,255,149,.70);
-      font-size:12px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      opacity:.9;
-    }
-    .v{
-      color:rgba(0,255,149,.55);
-      font-size:13px;
-      word-break:break-word;
-    }
-
-    .pillrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:10px;
-    }
-    .pill{
-      border:1px solid rgba(0,255,149,.18);
-      background:rgba(0,0,0,.35);
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:12px;
-      color:rgba(0,255,149,.60);
-      box-shadow:0 0 18px rgba(0,255,149,.06);
-    }
-
-    .glitch{ display:inline-block; }
-    .glitch:hover{
-      text-shadow:2px 0 rgba(0,255,149,.28), -2px 0 rgba(0,255,149,.18), 0 0 18px rgba(0,255,149,.14);
-      animation:glitch 320ms steps(2,end) 1;
-    }
-    @keyframes glitch{
-      0%{transform:translate(0,0) skewX(0)}
-      40%{transform:translate(2px,-1px) skewX(-6deg)}
-      60%{transform:translate(-2px,1px) skewX(7deg)}
-      100%{transform:translate(0,0) skewX(0)}
-    }
-
-    a{
-      color:rgba(0,255,149,.70);
-      text-decoration:none;
-      border-bottom:1px dashed rgba(0,255,149,.25);
-    }
-    a:hover{ border-bottom-color:rgba(0,255,149,.55); }
-
-    .reveal{
-      opacity:0;
-      transform:translateY(12px);
-      transition:opacity 700ms ease, transform 700ms ease;
-    }
-    .reveal.on{ opacity:1; transform:translateY(0); }
-
-    /* ===== Project row (fixed icon sizes) ===== */
-    .projectRow{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin:4px 0 0;
-    }
-    .appIcon{
-      width:44px;
-      height:44px;
-      border-radius:12px;
-      border:1px solid rgba(0,255,149,.18);
-      background:rgba(0,0,0,.35);
-      display:grid;
-      place-items:center;
-      box-shadow:0 0 18px rgba(0,255,149,.06);
-      flex:0 0 auto;
-    }
-    .appIcon svg{
-      width:22px;
-      height:22px;
-      stroke:rgba(0,255,149,.70);
-    }
-    .projectText{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      min-width:0;
-      text-align:left;
-      align-items:flex-start;
-    }
-    .projectTitle{
-      color:rgba(0,255,149,.72);
-      font-size:13px;
-      line-height:1.25;
-      text-align:left;
-    }
-    .projectMeta{
-      color:rgba(0,255,149,.52);
-      font-size:12px;
-      text-align:left;
-    }
-
-    /* footer */
-    footer{
-      margin-top:18px;
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      align-items:center;
-      justify-content:center;
-      padding:10px 8px 0;
-      font-size:11px;
-      line-height:1.4;
-      color:rgba(0,255,149,.40);
-    }
-    .footerLine{
-      opacity:0;
-      transform:translateY(8px);
-      animation:footerIn 650ms ease forwards;
-      text-shadow:0 0 22px rgba(0,255,149,.08);
-    }
-    .footerLine:nth-child(1){ animation-delay:.10s; }
-    .footerLine:nth-child(2){ animation-delay:.55s; }
-    .footerLine:nth-child(3){ animation-delay:1.00s; }
-    @keyframes footerIn{ to{ opacity:1; transform:translateY(0); } }
-
-    /* ===== ACCESS GATE ===== */
-    .gate{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      background:rgba(0,0,0,.92);
-      display:grid;
-      place-items:center;
-      padding:18px;
-    }
-
-    .gateBox{
-      width:min(720px, 100%);
-      border:1px solid rgba(0,255,149,.18);
-      border-radius:18px;
-      background:linear-gradient(180deg, rgba(2,21,5,.20), rgba(0,0,0,.2));
-      box-shadow:0 0 0 1px rgba(0,255,149,.05), 0 14px 60px rgba(0,0,0,.75);
-      overflow:hidden;
-    }
-
-    .gateHdr{
-      padding:16px 16px 12px;
-      border-bottom:1px solid rgba(0,255,149,.14);
-    }
-
-    .gateTitle{
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-size:13px;
-      color:rgba(0,255,149,.70);
-    }
-
-    .gateSub{
-      margin-top:6px;
-      font-size:12px;
-      color:rgba(0,255,149,.45);
-    }
-
-    .gateScreen{
-      padding:14px 16px 10px;
-      font-size:12px;
-      line-height:1.6;
-      color:rgba(0,255,149,.55);
-    }
-
-    .gateForm{
-      padding:12px 16px 18px;
-    }
-
-    .gateLabel{
-      font-size:12px;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-      color:rgba(0,255,149,.60);
-      margin-bottom:8px;
-      display:block;
-    }
-
-    /* ===== PIN DISPLAY + KEYPAD ===== */
-    .pinHidden{
-      position:absolute;
-      opacity:0;
-      pointer-events:none;
-      width:1px; height:1px;
-      border:0; padding:0; margin:0;
-    }
-
-    .pinPanel{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
-      width:100%;
-    }
-
-    .pinDisplay{
-      width:100%;
-      height:60px;
-      border-radius:16px;
-      border:1px solid rgba(0,255,149,.24);
-      background:rgba(0,0,0,.45);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:0 14px;
-      cursor:text;
-      position:relative;
-      box-shadow: 0 0 0 1px rgba(0,255,149,.03), 0 0 22px rgba(0,255,149,.05);
-    }
-
-    .pinDisplay::after{
-      content:"";
-      position:absolute;
-      left:10px; right:10px; bottom:-10px;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(0,255,149,.25), transparent);
-      opacity:.7;
-    }
-
-    .pinCell{
-      flex:1;
-      height:34px;
-      border-radius:12px;
-      border:1px solid rgba(0,255,149,.18);
-      background:rgba(0,0,0,.35);
-      position:relative;
-      box-shadow:0 0 14px rgba(0,255,149,.04);
-    }
-
-    .pinCell.filled::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      margin:auto;
-      width:10px; height:10px;
-      border-radius:50%;
-      background:rgba(0,255,149,.75);
-      box-shadow:0 0 18px rgba(0,255,149,.18);
-    }
-
-    .pinDisplay.focus{
-      box-shadow:0 0 0 3px rgba(0,255,149,.10), 0 0 28px rgba(0,255,149,.08);
-      border-color:rgba(0,255,149,.40);
-    }
-
-    .keypad{
-      width:100%;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-    }
-
-    .kbtn{
-      height:54px;
-      border-radius:14px;
-      border:1px solid rgba(0,255,149,.22);
-      background: rgba(2,21,5,.18);
-      color: rgba(0,255,149,.78);
-      font-weight:950;
-      letter-spacing:1px;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 0 0 1px rgba(0,255,149,.03);
-      user-select:none;
-    }
-    .kbtn:hover{
-      border-color:rgba(0,255,149,.40);
-      box-shadow:0 0 22px rgba(0,255,149,.10);
-    }
-    .kbtn:active{
-      transform: translateY(1px);
-      box-shadow:0 0 14px rgba(0,255,149,.08);
-    }
-
-    .kbtn.fn{
-      background: rgba(0,0,0,.35);
-      color: rgba(0,255,149,.70);
-      letter-spacing:1.6px;
-      text-transform:uppercase;
-      font-size:12px;
-    }
-
-    .kbtn.ok{
-      background: rgba(0,255,149,.10);
-      border-color: rgba(0,255,149,.35);
-    }
-
-    .gateActions{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      margin-top: 2px;
-    }
-
-    .gateBtn{
-      height:54px;
-      width:100%;
-      padding:0 18px;
-      border-radius:16px;
-      border:1px solid rgba(0,255,149,.25);
-      background:rgba(2,21,5,.25);
-      color:rgba(0,255,149,.75);
-      font-weight:950;
-      letter-spacing:1px;
-      cursor:pointer;
-    }
-    .gateBtn:hover{
-      border-color:rgba(0,255,149,.40);
-      box-shadow:0 0 22px rgba(0,255,149,.10);
-    }
-
-    .gateMsg{
-      margin-top:10px;
-      min-height:16px;
-      font-size:12px;
-      color:rgba(0,255,149,.55);
-    }
-    .gateMsg.bad{ color:rgba(255,80,80,.85); }
-
-    body.locked{ overflow:hidden; }
-
-    /* ===== MOBILE ===== */
-    @media (max-width: 600px){
-      main{ padding:18px 12px 48px; }
-
-      .topbar{
-        flex-direction:column;
-        align-items:flex-start;
-        text-align:left;
-        gap:10px;
-      }
-
-      .brand{ min-width:unset; width:100%; }
-
-      .status{
-        white-space:normal;
-        flex-wrap:wrap;
-        row-gap:6px;
-        justify-content:flex-start;
-        text-align:left;
-      }
-
-      .iconBtn{ margin-left: 6px; }
-
-      .typing{
-        white-space:normal;
-        border-right:none;
-        max-width:100%;
-        animation:none;
-        display:inline;
-      }
-
-      .projectRow{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-        text-align:left;
-      }
-      .appIcon{
-        width:52px;
-        height:52px;
-        border-radius:14px;
-      }
-      .appIcon svg{
-        width:24px;
-        height:24px;
-      }
-
-      .gate{
-        padding:12px;
-        place-items:center;
-      }
-
-      /* IMPORTANT: full width on mobile */
-      .gateBox{
-        width: calc(100vw - 24px);
-        max-width: 680px;
-        border-radius:16px;
-      }
-
-      .gateHdr{ padding:16px 14px 12px; }
-      .gateScreen{ padding:14px 14px 10px; min-height:110px; }
-      .gateForm{ padding:12px 14px 18px; }
-
-      .pinDisplay{ height:64px; }
-      .kbtn{ height:58px; }
-      .gateBtn{ height:58px; }
-    }
-
-    /* ===== PRINT (keep same colors as website) ===== */
-    @media print{
-      *{
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-      #gate{ display:none !important; }
-      .iconBtn{ display:none !important; }
-
-      body{
-        background:#000 !important;
-        color:#021505 !important;
-      }
-
-      .topbar, .hero, .card{
-        background: rgba(2,21,5,.14) !important;
-        border: 1px solid rgba(0,255,149,.16) !important;
-        box-shadow: none !important;
-      }
-
-      a{
-        color: rgba(0,255,149,.85) !important;
-        border-bottom: none !important;
-        text-decoration: underline !important;
-      }
-
-      body::before, body::after{ display:none !important; }
-
-      main{
-        max-width:980px !important;
-        margin:0 auto !important;
-        padding:0 !important;
-      }
-
-      .card, .hero, .topbar, footer{
-        break-inside:avoid;
-        page-break-inside:avoid;
-      }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Flamur Ahmeti</title>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#00ff95;
+  font-family:monospace;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1{ font-size:46px; margin:0; }
+h2{ margin-top:50px; }
+p{ color:#00ff95aa; line-height:1.6; }
+
+.card{
+  border:1px solid rgba(0,255,149,.2);
+  padding:20px;
+  margin-top:20px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 18px;
+  border:1px solid #00ff95;
+  text-decoration:none;
+}
+.metric{
+  font-size:22px;
+  margin:10px 0;
+}
+</style>
 </head>
 
 <body>
-  <!-- ACCESS GATE -->
-  <div id="gate" class="gate">
-    <div class="gateBox">
-      <div class="gateHdr">
-        <div class="gateTitle">ACCESS CONTROL</div>
-        <div class="gateSub">SECURE TERMINAL · AUTH REQUIRED</div>
-      </div>
+<main>
 
-      <div class="gateScreen" aria-live="polite">
-        <div class="line">[SYS] Initializing…</div>
-        <div class="line">[SYS] Encrypted session channel: OK</div>
-        <div class="line">[AUTH] Enter access PIN to continue.</div>
-      </div>
+<!-- HERO -->
+<h1>Flamur Ahmeti</h1>
+<p><strong>Full-Stack Product Engineer</strong></p>
 
-      <form id="gateForm" class="gateForm" autocomplete="off">
-        <label class="gateLabel">PIN</label>
+<p>
+I build scalable SaaS and e-commerce applications for real-world use.  
+From frontend to backend to deployment — I deliver production-ready systems.
+</p>
 
-        <!-- Hidden real input (keyboard support) -->
-        <input id="pinHidden" class="pinHidden" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" />
+<a class="btn" href="mailto:contact@flamurahmeti.com">→ Hire Me</a>
 
-        <div class="pinPanel">
-          <!-- Visual PIN display -->
-          <button type="button" class="pinDisplay" id="pinDisplay" aria-label="PIN display">
-            <span class="pinCell" data-i="0"></span>
-            <span class="pinCell" data-i="1"></span>
-            <span class="pinCell" data-i="2"></span>
-            <span class="pinCell" data-i="3"></span>
-          </button>
+<!-- TRUST -->
+<h2>Impact</h2>
 
-          <!-- Keypad -->
-          <div class="keypad" id="keypad" aria-label="Numeric keypad">
-            <button type="button" class="kbtn" data-k="1">1</button>
-            <button type="button" class="kbtn" data-k="2">2</button>
-            <button type="button" class="kbtn" data-k="3">3</button>
+<div class="metric">10+ production applications deployed</div>
+<div class="metric">30–50% performance improvements</div>
+<div class="metric">APIs handling real-world traffic</div>
+<div class="metric">Live Shopify & iOS apps in production</div>
 
-            <button type="button" class="kbtn" data-k="4">4</button>
-            <button type="button" class="kbtn" data-k="5">5</button>
-            <button type="button" class="kbtn" data-k="6">6</button>
+<!-- PROJECTS -->
+<h2>Selected Work</h2>
 
-            <button type="button" class="kbtn" data-k="7">7</button>
-            <button type="button" class="kbtn" data-k="8">8</button>
-            <button type="button" class="kbtn" data-k="9">9</button>
-
-            <button type="button" class="kbtn fn" data-act="clr">CLR</button>
-            <button type="button" class="kbtn" data-k="0">0</button>
-            <button type="button" class="kbtn ok" data-act="ok">OK</button>
-          </div>
-
-          <div class="gateActions">
-            <button class="gateBtn" type="submit">UNLOCK</button>
-          </div>
-        </div>
-
-        <div id="gateMsg" class="gateMsg"></div>
-      </form>
-    </div>
-  </div>
-
-  <main>
-    <div class="topbar">
-      <div class="brand">
-        <div class="tag">Full-Stack Product Engineer</div>
-        <div class="status"><span class="dot"></span> Available for work</div>
-      </div>
-
-      <div class="status">
-        <span class="glitch">Flamur Ahmeti</span> • <span id="clock"></span>
-
-        <!-- PRINT ICON -->
-        <button class="iconBtn" id="printBtn" type="button" aria-label="Print CV as PDF" title="Print / Save as PDF">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-            <path d="M6 9V3h12v6" />
-            <path d="M6 18h12v3H6z" />
-            <path d="M6 14h12" />
-            <path d="M8 11h.01" />
-            <path d="M20 14v-4a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v4" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <section class="hero reveal">
-      <h1 class="headline">
-        <span class="typing">
-          Flamur Ahmeti
-          <span style="display:block;font-size:.65em;opacity:.75">Full-Stack Product Engineer</span>
-        </span>
-      </h1>
-      <p class="sub">
-        Full-Stack Product Engineer focused on building production-ready web applications with Next.js, covering UI development, backend logic, APIs, and deployment.
-        Delivers clean and maintainable code with predictable performance, secure application fundamentals and maintainable codebases.
-        Primary stack spans modern JavaScript/TypeScript, React, and Vercel-based deployment workflows.
-      </p>
-    </section>
-
-    <section class="grid">
-      <div class="card reveal">
-        <h2>Summary</h2>
-        <p>
-          Builds modern web applications using Next.js, focusing on clean UI, server-side rendering, routing, authentication, and database integration.
-          Develops, deploys, and maintains applications on Vercel with emphasis on performance, scalability, and production-ready code.
-        </p>
-        <div class="pillrow" aria-label="highlights">
-          <span class="pill">Full-Stack</span>
-          <span class="pill">UI Engineering</span>
-          <span class="pill">APIs</span>
-          <span class="pill">Databases</span>
-          <span class="pill">Deployment</span>
-          <span class="pill">Security Basics</span>
-        </div>
-      </div>
-
-      <aside class="card reveal">
-        <h2>Contact</h2>
-        <div class="kv">
-          <div class="k">Location</div><div class="v">Kosovo</div>
-          <div class="k">Email</div><div class="v"><a href="mailto:contact@flamurahmeti.com">contact@flamurahmeti.com</a></div>
-          <div class="k">Website</div><div class="v"><a href="https://www.flamurahmeti.com" target="_blank" rel="noreferrer noopener">www.flamurahmeti.com</a></div>
-          <div class="k">GitHub</div><div class="v"><a href="https://github.com/someonedev32" target="_blank" rel="noreferrer noopener">github.com/fa</a></div>
-        </div>
-      </aside>
-
-      <div class="card reveal">
-        <h2>Experience</h2>
-        <ul>
-          <li>
-            <span class="glitch">Full-Stack Product Engineer</span> — <span class="glitch">Instaserver</span> (<span class="glitch">2024–2025</span>)<br/>
-            Built and maintained web features across frontend and backend: UI components, REST/JSON APIs, authentication flows, and admin tooling.
-          </li>
-          <li>
-            <span class="glitch">Full-Stack Product Engineer</span> — <span class="glitch">www.instaserver.net</span> (<span class="glitch">2024–2026</span>)<br/>
-            Managed deployments and production updates: environment configuration, domain/SSL setup, performance checks, and bug fixes.
-            Gained hands-on experience building and maintaining iOS apps and Shopify apps in production environments.
-          </li>
-        </ul>
-      </div>
-
-      <div class="card reveal">
-        <h2>Skills</h2>
-        <div class="pillrow">
-          <span class="pill">HTML5</span>
-          <span class="pill">CSS3</span>
-          <span class="pill">PHP</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">TypeScript</span>
-          <span class="pill">React</span>
-          <span class="pill">Next.js</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">Supabase</span>
-          <span class="pill">MongoDB</span>
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">SQL</span>
-          <span class="pill">CI/CD</span>
-          <span class="pill">Monitoring</span>
-          <span class="pill">Containers</span>
-          <span class="pill">CDN</span>
-          <span class="pill">Vercel</span>
-          <span class="pill">Render</span>
-          <span class="pill">cPanel</span>
-          <span class="pill">GitHub</span>
-          <span class="pill">Shopify</span>
-          <span class="pill">WordPress</span>
-          <span class="pill">Web Performance</span>
-          <span class="pill">Security & Backup</span>
-        </div>
-      </div>
-
-     <div class="card reveal">
-  <h2>Projects</h2>
-
-  <!-- iOS Apps -->
-  <div class="projectRow">
-    <a class="appIcon" href="https://apps.apple.com/xk/developer/flamur-ahmeti/id1857404716" target="_blank" rel="noreferrer noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-        <path d="M16 2c-1.2.8-2 2.2-2 3.8 0 .5.1 1 .2 1.4 1.6.1 3.1-.7 3.9-1.8.7-.9 1.1-2 .9-3.4-.7-.1-2 .1-3 .0Z"/>
-        <path d="M12.2 7.2c1.4 0 2.5-.9 3.5-.9 1 0 2.3.7 3.1 1.9-2.8 1.5-2.3 5.2.5 6.3-.5 1.4-1.1 2.8-2 4-.8 1.1-1.6 2.1-2.9 2.1-1.2 0-1.6-.7-3.1-.7s-2 .7-3.1.7c-1.3 0-2.2-1.1-3-2.2-1.6-2.3-2.8-6.4-.9-9.1.9-1.3 2.4-2.1 3.9-2.1 1.2 0 2.2.8 3.1.8Z" stroke="rgba(0,255,149,.70)"/>
-      </svg>
-    </a>
-
-    <div class="projectText">
-      <div class="projectTitle"><span class="glitch">10+</span> — iOS Apps</div>
-      <div class="projectMeta">
-        App Store:
-        <a href="https://apps.apple.com/xk/developer/flamur-ahmeti/id1857404716" target="_blank" rel="noreferrer noopener">
-          View Apps
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Shopify Apps -->
-  <div class="projectRow" style="margin-top:12px;">
-    <a class="appIcon" href="https://apps.shopify.com/partners/promoteyourshop-com" target="_blank" rel="noreferrer noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-        <path d="M6 2h12l2 6v14H4V8l2-6Z"/>
-        <path d="M6 8h12"/>
-      </svg>
-    </a>
-
-    <div class="projectText">
-      <div class="projectTitle">Shopify Apps</div>
-      <div class="projectMeta">
-        Shopify App Store:
-        <a href="https://apps.shopify.com/partners/promoteyourshop-com" target="_blank" rel="noreferrer noopener">
-          View Apps
-        </a>
-      </div>
-    </div>
-  </div>
-
+<div class="card">
+<h3>Shopify Apps</h3>
+<p>
+Built Shopify apps used by real stores.  
+Handled API integrations, backend logic, and deployment.
+</p>
+<a href="https://apps.shopify.com/partners/promoteyourshop-com">View Apps</a>
 </div>
 
-      <div class="card reveal">
-        <h2>Education</h2>
-        <ul>
-          <li><span class="glitch">Self-paced courses</span> — <span class="glitch">Udemy / YouTube</span></li>
-        </ul>
-      </div>
-    </section>
+<div class="card">
+<h3>iOS Apps (10+)</h3>
+<p>
+Developed and deployed multiple iOS applications to production.  
+Handled full lifecycle from idea to App Store.
+</p>
+<a href="https://apps.apple.com/xk/developer/flamur-ahmeti/id1857404716">View Apps</a>
+</div>
 
-    <footer class="reveal">
-      <div class="footerLine"><span class="glitch">© <span id="year"></span> Flamur Ahmeti</span></div>
-      <div class="footerLine">Built away from the noise</div>
-      <div class="footerLine" style="opacity:.65">Focused on precision</div>
-    </footer>
-  </main>
+<!-- CASE STUDY -->
+<h2>Case Study</h2>
 
-  <script>
-    // ===== ACCESS PIN GATE (visual) =====
-    const ACCESS_PIN = "0102"; // change here (4 digits)
-    const gate = document.getElementById("gate");
-    const gateForm = document.getElementById("gateForm");
-    const gateMsg = document.getElementById("gateMsg");
+<div class="card">
+<h3>Shopify App System</h3>
 
-    const pinHidden = document.getElementById("pinHidden");
-    const pinDisplay = document.getElementById("pinDisplay");
-    const pinCells = Array.from(document.querySelectorAll(".pinCell"));
-    const keypad = document.getElementById("keypad");
+<p><strong>Problem:</strong><br/>
+Stores needed better tracking and automation tools.</p>
 
-    function openGate(){
-      document.body.classList.add("locked");
-      gate.style.display = "grid";
-      setTimeout(() => pinHidden?.focus(), 80);
-      renderPin();
-    }
-    function closeGate(){
-      document.body.classList.remove("locked");
-      gate.style.display = "none";
-    }
-    function isUnlocked(){ return sessionStorage.getItem("cv_unlocked") === "1"; }
-    function setUnlocked(){ sessionStorage.setItem("cv_unlocked", "1"); }
+<p><strong>Solution:</strong><br/>
+Built a Shopify app integrating Shopify APIs, backend logic, and dashboard UI.</p>
 
-    function ok(msg){
-      gateMsg.textContent = msg;
-      gateMsg.classList.remove("bad");
-    }
-    function fail(msg){
-      gateMsg.textContent = msg;
-      gateMsg.classList.add("bad");
-    }
+<p><strong>What I Did:</strong><br/>
+- Full-stack development (Next.js + backend)<br/>
+- API integration with Shopify<br/>
+- Deployment and maintenance</p>
 
-    function getPin(){
-      return (pinHidden.value || "").replace(/\D/g,"").slice(0,4);
-    }
-    function setPin(v){
-      pinHidden.value = (v || "").replace(/\D/g,"").slice(0,4);
-      renderPin();
-    }
-    function clearPin(){
-      setPin("");
-      ok("");
-    }
-    function backspace(){
-      const v = getPin();
-      setPin(v.slice(0,-1));
-    }
-    function addDigit(d){
-      const v = getPin();
-      if (v.length >= 4) return;
-      setPin(v + String(d));
-    }
-    function renderPin(){
-      const v = getPin();
-      pinCells.forEach((c,i)=> c.classList.toggle("filled", i < v.length));
-    }
+<p><strong>Result:</strong><br/>
+Improved store workflow and enabled automation features used in live environments.  
+Optimized performance and reduced load times significantly.</p>
+</div>
 
-    function tryUnlock(){
-      const v = getPin();
-      if (v.length !== 4) return fail("Enter 4 digits.");
-      if (v !== ACCESS_PIN) { fail("ACCESS DENIED."); setTimeout(clearPin, 250); return; }
-      ok("ACCESS GRANTED.");
-      setUnlocked();
-      setTimeout(closeGate, 250);
-    }
+<!-- STACK -->
+<h2>Stack</h2>
+<p>
+Next.js, React, TypeScript, Node.js, REST APIs, PostgreSQL, MongoDB, Vercel
+</p>
 
-    // focus visuals
-    pinDisplay.addEventListener("click", () => pinHidden.focus());
-    pinHidden.addEventListener("focus", () => pinDisplay.classList.add("focus"));
-    pinHidden.addEventListener("blur",  () => pinDisplay.classList.remove("focus"));
+<!-- CTA -->
+<h2>Work With Me</h2>
 
-    // keypad click
-    keypad.addEventListener("click", (e) => {
-      const btn = e.target.closest("button");
-      if (!btn) return;
-      const digit = btn.getAttribute("data-k");
-      const act = btn.getAttribute("data-act");
-      if (digit != null) addDigit(digit);
-      else if (act === "clr") clearPin();
-      else if (act === "ok") tryUnlock();
-      pinHidden.focus();
-    });
+<p>
+I build real products — not just demos.  
+If you need a developer who can ship end-to-end systems, let's talk.
+</p>
 
-    // keyboard input support
-    pinHidden.addEventListener("input", () => {
-      setPin(pinHidden.value);
-    });
+<a class="btn" href="mailto:contact@flamurahmeti.com">
+→ Contact Me
+</a>
 
-    document.addEventListener("keydown", (e) => {
-      if (gate.style.display !== "grid") return;
-      if (e.key === "Enter") { e.preventDefault(); tryUnlock(); }
-      else if (e.key === "Backspace") { e.preventDefault(); backspace(); }
-      else if (e.key === "Escape") { e.preventDefault(); clearPin(); }
-      else if (/^\d$/.test(e.key)) { e.preventDefault(); addDigit(e.key); }
-    });
-
-    // init gate
-    if (!isUnlocked()) openGate(); else closeGate();
-
-    gateForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      tryUnlock();
-    });
-
-    // print / save as PDF
-    document.getElementById("printBtn")?.addEventListener("click", () => window.print());
-
-    // clock
-    const clock = document.getElementById("clock");
-    function tick(){
-      const d = new Date();
-      const hh = String(d.getHours()).padStart(2,"0");
-      const mm = String(d.getMinutes()).padStart(2,"0");
-      const ss = String(d.getSeconds()).padStart(2,"0");
-      clock.textContent = `${hh}:${mm}:${ss}`;
-    }
-    tick(); setInterval(tick, 250);
-
-    // reveal on scroll
-    const els = Array.from(document.querySelectorAll(".reveal"));
-    const io = new IntersectionObserver((entries)=>{
-      for (const entry of entries){
-        if (entry.isIntersecting) entry.target.classList.add("on");
-      }
-    }, { threshold: 0.12 });
-    els.forEach(el => io.observe(el));
-
-    // footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+</main>
 </body>
 </html>
