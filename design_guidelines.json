@@ -1,0 +1,92 @@
+{
+  "theme": "dark",
+  "archetype": "Swiss & High-Contrast / Cinematic Tech",
+  "typography": {
+    "primary_font": "Geist Sans, Inter, sans-serif",
+    "secondary_font": "Geist Mono, Roboto Mono, monospace",
+    "scale": {
+      "h1": "text-5xl md:text-7xl lg:text-8xl tracking-tighter font-medium text-white",
+      "h2": "text-3xl md:text-4xl tracking-tight font-medium text-zinc-100",
+      "h3": "text-xl md:text-2xl font-medium text-zinc-200",
+      "body": "text-base md:text-lg text-zinc-400 leading-relaxed",
+      "metadata": "text-xs uppercase tracking-[0.2em] font-mono text-zinc-500"
+    }
+  },
+  "colors": {
+    "background": "#050505",
+    "surface": "#0a0a0a",
+    "surface_hover": "#111111",
+    "border": "rgba(255, 255, 255, 0.08)",
+    "border_hover": "rgba(255, 255, 255, 0.2)",
+    "text_primary": "#ededed",
+    "text_secondary": "#a1a1aa",
+    "accent": "#f8fafc"
+  },
+  "spacing": {
+    "section": "py-24 md:py-32",
+    "container": "max-w-4xl mx-auto px-6",
+    "gap": "gap-8 md:gap-12"
+  },
+  "effects": {
+    "shadows": {
+      "card": "shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_8px_32px_-8px_rgba(0,0,0,0.5)]",
+      "glow": "shadow-[0_0_32px_0_rgba(255,255,255,0.1)]"
+    },
+    "radius": "rounded-2xl"
+  },
+  "animations": {
+    "entrance": "Blur-to-focus fade up (y: 20, opacity: 0, filter: blur(10px)) -> (y: 0, opacity: 1, filter: blur(0px))",
+    "hover_card": "Scale 1.02, elevate shadow, border opacity increases",
+    "magnetic_button": "Framer motion spring physics on hover for x and y coordinates",
+    "ambient_background": "Slow-moving CSS mesh gradient with Framer Motion mouse-follow radial glow (pointer tracking)"
+  },
+  "content_structure": {
+    "hero": {
+      "name": "FLAMUR AHMETI",
+      "roles": ["Software Engineer", "Full Stack Developer", "AI & Automation Builder"],
+      "composition": "Absolute center, large bold name, roles rotating or fading in underneath"
+    },
+    "about": {
+      "text": "I build scalable SaaS and e-commerce applications for real-world use. From frontend to backend to deployment — I deliver production-ready systems."
+    },
+    "projects": [
+      {
+        "title": "Shopify App System",
+        "description": "Full-stack Shopify apps handling real-world traffic, API integrations, and backend logic.",
+        "link": "https://apps.shopify.com/partners/promoteyourshop-com",
+        "tech": ["Next.js", "Node.js", "Shopify API"]
+      },
+      {
+        "title": "iOS Applications (10+)",
+        "description": "Production applications deployed to the App Store handling full lifecycle from idea to launch.",
+        "link": "https://apps.apple.com/xk/developer/flamur-ahmeti/id1857404716",
+        "tech": ["Swift", "React Native", "Mobile UI"]
+      }
+    ],
+    "tech_stack": ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "MongoDB", "Framer Motion", "TailwindCSS"],
+    "contact": {
+      "email": "contact@flamurahmeti.com",
+      "cta_text": "Get In Touch"
+    }
+  },
+  "component_blueprints": {
+    "Hero": "Fullscreen section (min-h-screen). Background: dark mesh gradient and particles. Center aligned Flexbox. Framer motion staggered text reveal for 'FLAMUR AHMETI'.",
+    "ProjectCard": "div with rounded-2xl, border-white/10, bg-white/5. Hover group: translates up slightly, reveals glowing border. Includes Title, one-line desc, and external links.",
+    "TechBadge": "Pill shape (rounded-full), text-sm text-zinc-300, bg-white/5 border border-white/10. Hover: bg-white/10.",
+    "MagneticButton": "Custom Framer Motion component. Wraps standard button. Tracks mouse offset to apply slight spring-based transform. Primary CTA uses white bg with black text for high contrast."
+  },
+  "media_urls": {
+    "icons": ["lucide-react"]
+  },
+  "instructions_to_main_agent": [
+    "Install 'framer-motion', 'lucide-react', 'clsx', 'tailwind-merge'.",
+    "Install '@fontsource/geist-sans' and '@fontsource/geist-mono' and import them in index.css.",
+    "Build a one-page seamless scroll experience in App.js.",
+    "Implement the mouse-following radial gradient using a fixed pointer event listener and Framer Motion for the background glow.",
+    "Ensure all interactive elements have data-testid attributes.",
+    "Use a dark theme explicitly: background '#050505', text colors in the 'zinc' scale. Set global body background in index.css.",
+    "Add global CSS in index.css for the subtle animated background mesh and text-selection styles (e.g., bg-white/20).",
+    "Make the website fully responsive. Hero text must shrink gracefully on mobile.",
+    "For the Hero roles, use Framer Motion AnimatePresence to cycle through them or list them cleanly separated by ' • '."
+  ]
+}
