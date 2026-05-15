@@ -1,0 +1,225 @@
+@import "@fontsource/geist-sans/300.css";
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-sans/700.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #050505;
+  color: #ededed;
+  font-family: "Geist Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* Custom scrollbar — thin and ghostly */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Custom cursor lighting layer */
+.cursor-glow {
+  position: fixed;
+  pointer-events: none;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(80px);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.03) 30%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  will-change: transform;
+  transition: opacity 0.4s ease;
+}
+
+/* Animated mesh gradient — Apple/Linear inspired */
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mesh-bg::before,
+.mesh-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.mesh-bg::before {
+  width: 60vw;
+  height: 60vw;
+  top: -15vw;
+  left: -15vw;
+  background: radial-gradient(circle, rgba(120, 130, 160, 0.35), transparent 60%);
+  animation: meshA 22s ease-in-out infinite;
+}
+
+.mesh-bg::after {
+  width: 55vw;
+  height: 55vw;
+  bottom: -20vw;
+  right: -10vw;
+  background: radial-gradient(circle, rgba(190, 175, 145, 0.22), transparent 60%);
+  animation: meshB 28s ease-in-out infinite;
+}
+
+@keyframes meshA {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50%      { transform: translate3d(8vw, 5vw, 0) scale(1.1); }
+}
+
+@keyframes meshB {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50%      { transform: translate3d(-6vw, -4vw, 0) scale(1.15); }
+}
+
+/* Subtle grain overlay for cinematic depth */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/></svg>");
+}
+
+/* Faint cyber grid */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* Shimmer text for big name */
+.shimmer-text {
+  background: linear-gradient(
+    100deg,
+    #f4f4f5 0%,
+    #ffffff 35%,
+    #c8c8cf 50%,
+    #ffffff 65%,
+    #e4e4e7 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Hide outline ring focus for mouse, keep for keyboard */
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible {
+  outline: 1px solid rgba(255,255,255,0.4);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Glass card base */
+.glass {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Floating particles container */
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  animation: particleFloat linear infinite;
+  opacity: 0;
+}
+@keyframes particleFloat {
+  0%   { opacity: 0; transform: translateY(0) translateX(0); }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-120vh) translateX(20px); }
+}
+
+/* Loading bar */
+.loader-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  z-index: 100;
+}
