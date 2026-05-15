@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { ArrowDownRight, Mail } from "lucide-react";
 import MagneticButton from "./MagneticButton";
-
-const ROLES = [
-  "Software Engineer",
-  "Full Stack Developer",
-  "AI & Automation Builder",
-];
 
 const NAME_LINES = ["FLAMUR", "AHMETI"];
 
 export default function Hero() {
-  const [roleIdx, setRoleIdx] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setRoleIdx((i) => (i + 1) % ROLES.length);
-    }, 2600);
-    return () => clearInterval(id);
-  }, []);
 
   return (
     <section
@@ -91,7 +77,7 @@ export default function Hero() {
           ))}
         </h1>
 
-        {/* Rotating roles */}
+        {/* Static role line */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,21 +85,12 @@ export default function Hero() {
           className="mt-8 flex items-center gap-3 md:mt-10"
         >
           <span className="h-px w-8 bg-white/15" />
-          <div className="relative h-6 w-[18rem] overflow-hidden md:h-7 md:w-[22rem]">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={roleIdx}
-                data-testid="hero-role"
-                initial={{ y: 20, opacity: 0, filter: "blur(6px)" }}
-                animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                exit={{ y: -20, opacity: 0, filter: "blur(6px)" }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 flex items-center justify-center font-mono text-xs uppercase tracking-[0.32em] text-zinc-300 md:text-sm"
-              >
-                {ROLES[roleIdx]}
-              </motion.span>
-            </AnimatePresence>
-          </div>
+          <span
+            data-testid="hero-role"
+            className="whitespace-nowrap font-mono text-xs uppercase tracking-[0.32em] text-zinc-300 md:text-sm"
+          >
+            Full-Stack Product Engineer
+          </span>
           <span className="h-px w-8 bg-white/15" />
         </motion.div>
 
