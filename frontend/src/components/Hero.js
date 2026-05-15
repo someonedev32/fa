@@ -27,22 +27,21 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center px-6 pt-24 md:pt-0"
     >
-      {/* Top status bar */}
+      {/* Top status bar — right aligned */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-1/2 top-6 -translate-x-1/2 md:top-8"
+        className="absolute right-6 top-6 md:right-10 md:top-8"
       >
         <div className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 backdrop-blur-md">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70 opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
-          <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-zinc-400 md:text-[10px] md:tracking-[0.25em]">
-            <span className="hidden sm:inline">Available for select work · </span>
-            <span className="sm:hidden">Available · </span>
-            2026
+          <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-zinc-300 md:text-[10px] md:tracking-[0.25em]">
+            <span className="hidden sm:inline">Open for new projects</span>
+            <span className="sm:hidden">Open for projects</span>
           </span>
         </div>
       </motion.div>
