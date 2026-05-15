@@ -9,7 +9,7 @@ const ROLES = [
   "AI & Automation Builder",
 ];
 
-const nameLetters = "FLAMUR AHMETI".split("");
+const NAME_LINES = ["FLAMUR", "AHMETI"];
 
 export default function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
@@ -34,13 +34,15 @@ export default function Hero() {
         transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="absolute left-1/2 top-6 -translate-x-1/2 md:top-8"
       >
-        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 backdrop-blur-md">
+        <div className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 backdrop-blur-md">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70 opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
-            Available for select work · 2026
+          <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-zinc-400 md:text-[10px] md:tracking-[0.25em]">
+            <span className="hidden sm:inline">Available for select work · </span>
+            <span className="sm:hidden">Available · </span>
+            2026
           </span>
         </div>
       </motion.div>
@@ -57,44 +59,38 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Top-right meta */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="absolute right-6 top-6 hidden md:block md:right-10 md:top-10"
-      >
-        <div className="text-right font-mono text-[10px] uppercase tracking-[0.35em] text-zinc-500">
-          Pristina · Kosovo
-          <br />
-          <span className="text-zinc-700">UTC +01:00</span>
-        </div>
-      </motion.div>
-
       {/* Main name */}
-      <div className="relative z-10 flex flex-col items-center text-center">
-        <motion.h1
+      <div className="relative z-10 flex w-full flex-col items-center px-4 text-center">
+        <h1
           data-testid="hero-name"
           aria-label="Flamur Ahmeti"
-          className="select-none font-sans text-[15vw] font-medium leading-[0.9] tracking-[-0.06em] text-white md:text-[12vw] lg:text-[10vw] xl:text-[160px]"
+          className="select-none font-sans font-semibold leading-[0.86] tracking-[-0.055em] text-white"
+          style={{
+            fontSize: "clamp(64px, 22vw, 200px)",
+            letterSpacing: "-0.055em",
+          }}
         >
-          {nameLetters.map((ch, i) => (
-            <span key={i} className="inline-block overflow-hidden align-bottom">
+          {NAME_LINES.map((line, lineIdx) => (
+            <div
+              key={line}
+              className="block overflow-hidden"
+              style={{ paddingBottom: "0.04em" }}
+            >
               <motion.span
-                initial={{ y: "110%", opacity: 0, filter: "blur(12px)" }}
+                initial={{ y: "110%", opacity: 0, filter: "blur(14px)" }}
                 animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
                 transition={{
-                  delay: 0.3 + i * 0.045,
-                  duration: 1.05,
+                  delay: 0.25 + lineIdx * 0.16,
+                  duration: 1.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="shimmer-text inline-block"
               >
-                {ch === " " ? "\u00A0" : ch}
+                {line}
               </motion.span>
-            </span>
+            </div>
           ))}
-        </motion.h1>
+        </h1>
 
         {/* Rotating roles */}
         <motion.div

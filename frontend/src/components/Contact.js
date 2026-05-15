@@ -36,7 +36,7 @@ export default function Contact() {
 
         <div className="relative">
           <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-zinc-500">
-            05 / Let's Talk
+            04 / Let's Talk
           </div>
 
           <h2 className="mx-auto mt-6 max-w-3xl text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-zinc-50 md:text-6xl">
