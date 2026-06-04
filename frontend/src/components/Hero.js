@@ -89,7 +89,7 @@ export default function Hero() {
             data-testid="hero-role"
             className="whitespace-nowrap font-mono text-xs uppercase tracking-[0.32em] text-zinc-300 md:text-sm"
           >
-            Full-Stack Product Engineer
+            Senior Shopify Developer & Full-Stack Engineer
           </span>
           <span className="h-px w-8 bg-white/15" />
         </motion.div>
